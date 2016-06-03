@@ -1,0 +1,23 @@
+.dotGrade{
+	fill: blue;
+	r: 3.5px;
+}
+.dotQuant{
+	fill: grey;
+	stroke: white;
+	stroke-width: 1px;
+}
+.x-axis{
+	fill: black;
+}
+.y-axis{
+	fill: grey;
+}
+.z-axis{
+	fill: blue;
+}
+.lineGrade{
+	stroke-width:2px;
+	stroke: blue;
+	fill: transparent;	
+}

@@ -1,0 +1,59 @@
+<body>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript" src="VisGeral.js"></script>
+		<link type="text/css" rel="stylesheet" href="VisGeral.css"/>
+	</head>
+	<body>
+		<div id="menus"></div>
+		<script type="text/javascript">
+
+			var vis = d3.select("body").append("svg")
+		         .attr("width", 1000)
+		         .attr("height",1000);
+
+
+
+			  var tooltip = d3.select("body")
+			      .append("div")
+			      .style("position", "absolute")
+			      .style("z-index", "10")
+			      .style("visibility", "hidden")
+			      .text("a simple tooltip")
+			      .style("font-size","15px");
+
+			      var dataset = [];
+			d3.csv("tabelaVisGeral.csv",function(data){
+				dataset = data ;
+				console.log(dataset);
+	      
+/*
+	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
+	        var prod = [//"geral",
+	                    "linguagens",
+	                    "humanas", 
+	                    "natureza",
+	                    "redacao",
+	                    "matematica"];
+	        subjectMenu.selectAll("option").data(prod).enter().append("option")
+	          .attr("value", function (d) { return d })
+	          .text(function (d) { return d });
+
+	        var subject = prod[0];
+
+	        d3.select("#subjectMenu").on("change", function() {
+	        	grafico.remove();
+	          subject = d3.select("#subjectMenu").property("value");
+	          VisGeral();
+	        });
+*/
+	        VisGeral();
+	      });
+
+
+
+
+		</script>>
+	</body>
+</body>

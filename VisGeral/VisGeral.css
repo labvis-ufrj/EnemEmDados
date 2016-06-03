@@ -1,0 +1,53 @@
+.dotLines{
+	stroke: grey;
+	stroke-width: 2px;
+	opacity: .2;
+}
+.dotMatematica{
+	fill: blue;
+	r: 3.5;
+	stroke: grey;
+	stroke-width: 2px;
+}
+.dotLinguagens{
+	fill: transparent;
+	width:10px;
+	height: 10px;
+	stroke: grey;
+	stroke-width: 2px;
+}
+.dotHumanas{
+	fill: green;
+	r: 3.5;
+	stroke: grey;
+	stroke-width: 2px;
+}
+.dotNatureza{
+	fill: yellow;
+	r: 3.5;
+	stroke: grey;
+	stroke-width: 2px;
+}
+
+.x-axis{
+	fill: black;
+}
+.x-axis.domain{
+	width: 30px;
+}
+.y-axis{
+	fill: grey;
+}
+.z-axis{
+	fill: blue;
+}
+.textLabels{
+	text-anchor: middle;
+	font-family: sans-serif;
+	font-size: 15px;
+	fill: grey;
+}
+.lineX{
+	stroke: grey;
+	stroke-width: 06px;
+}

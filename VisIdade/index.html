@@ -25,20 +25,19 @@
 */		
 
 
+			var tamanhoy = 600;
 
+			var tamanhox = 800;
 
 		     var dataset = [];
 		     var ageScale;
 		     var gradeScale;
 		     var quantScale;
+		     
 			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 				dataset = data ;
 				console.log(dataset);
 	      
-
-			var tamanhoy = 600;
-
-			var tamanhox = 800;
 
 			var maxQuant = maxVal = minVal = minQuant = 0;
 

@@ -180,15 +180,16 @@ function update(subject){
 				.filter(function(d, i){return d3.select(this).attr("class") == "lineGrade"})
 				.remove();
 */
-	grafico.selectAll(".lineGrade").remove();
+	//grafico.selectAll(".lineGrade").remove();
 
 	grafico.selectAll(".lineGrade")
-			.data([1])
-			.enter()
-			.append("path")
-			.attr("class","lineGrade")
+	//		.data([1])
+	//		.enter()
+	//		.append("path")
+	//		.attr("class","lineGrade")
 			.transition()
-			.delay(800)
+			//.delay(800)
             .attr("d", lineFunction(dataset))
+            .duration(500)
             .attr("fill", "none");        
 }

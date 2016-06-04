@@ -3,7 +3,7 @@
 
 
 function VisIdade(subject){
-
+/*
 	var tamanhoy = 600;
 
 	var tamanhox = 800;
@@ -35,10 +35,10 @@ function VisIdade(subject){
 			};
 		};
 	};
-/*	var colorGrades = d3.scale.linear()
+	var colorGrades = d3.scale.linear()
 	    .domain([minVal, maxVal])
 	    .range(["rgb(12,239,255)","rgb(05,00,49)"]);
-*/
+
 	var primeiraIdade = 0;
 	while (1){
 		if (dataset[primeiraIdade].quantidade != "0"){break}
@@ -65,7 +65,7 @@ function VisIdade(subject){
 	var quantScale = d3.scale.linear()
 	    .domain([0, maxQuant*1.05])
 	    .range([tamanhoy, 0]);
-
+*/
 	grafico = vis.selectAll("g")
 			.data([0])
 		   	.enter()

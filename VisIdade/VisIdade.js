@@ -175,17 +175,20 @@ function update(subject){
 			.x(function(d){return ageScale(Number(d.idade)); })
 			.y(function(d){return gradeScale(Number(d[subject])); })
 			.interpolate("linear");
+/*
+	var linha = d3.selectAll("path")
+				.filter(function(d, i){return d3.select(this).attr("class") == "lineGrade"})
+				.remove();
+*/
+	grafico.selectAll(".lineGrade").remove();
 
-	var linha = grafico.selectAll("lineGrade")
-	linha.remove();
-
-	grafico.selectAll("lineGrade")
+	grafico.selectAll(".lineGrade")
 			.data([1])
 			.enter()
-			//.transition()
-			//.delay(800)
 			.append("path")
 			.attr("class","lineGrade")
+			.transition()
+			.delay(800)
             .attr("d", lineFunction(dataset))
             .attr("fill", "none");        
 }

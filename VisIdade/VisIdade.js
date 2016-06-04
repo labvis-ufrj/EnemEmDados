@@ -176,7 +176,8 @@ function update(subject){
 			.y(function(d){return gradeScale(Number(d[subject])); })
 			.interpolate("linear");
 
-	grafico.selectAll("lineGrade").remove()
+	var linha = grafico.selectAll("lineGrade")
+	linha.remove();
 
 	grafico.selectAll("lineGrade")
 			.data([1])

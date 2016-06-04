@@ -190,6 +190,6 @@ function update(subject){
 			.transition()
 			//.delay(800)
             .attr("d", lineFunction(dataset))
-            .duration(500)
+            .duration(600)
             .attr("fill", "none");        
 }

@@ -181,9 +181,9 @@ function update(subject){
 	grafico.selectAll("lineGrade")
 			.data([1])
 			.enter()
-			.transition()
+			//.transition()
 			//.delay(800)
-			//.append("path")
+			.append("path")
 			.attr("class","lineGrade")
             .attr("d", lineFunction(dataset))
             .attr("fill", "none");        

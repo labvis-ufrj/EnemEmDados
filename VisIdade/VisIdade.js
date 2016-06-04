@@ -169,4 +169,15 @@ function update(subject){
 	      .attr("cx", function(d) { return ageScale(Number(d.idade)); })
 	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); })
 	      .duration(600);
+
+	var lineFunction = d3.svg.line()
+			.x(function(d){return ageScale(Number(d.idade)); })
+			.y(function(d){return gradeScale(Number(d[subject])); })
+			.interpolate("linear");
+
+	grafico.selectAll("lineGrade")
+		  .transition()
+		  .attr("d", lineFunction(dataset))
+		  .duration(600);
+        
 }

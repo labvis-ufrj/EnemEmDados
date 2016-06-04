@@ -13,7 +13,6 @@
 		         .attr("width", 1000)
 		         .attr("height",1000);
 
-
 /*
 			  var tooltip = d3.select("body")
 			      .append("div")
@@ -24,7 +23,6 @@
 			      .style("font-size","15px");
 */		
 
-
 			var tamanhoy = 600;
 
 			var tamanhox = 800;
@@ -33,7 +31,7 @@
 		     var ageScale;
 		     var gradeScale;
 		     var quantScale;
-		     
+
 			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 				dataset = data ;
 				console.log(dataset);
@@ -66,10 +64,6 @@
 					};
 				};
 			};
-		/*	var colorGrades = d3.scale.linear()
-			    .domain([minVal, maxVal])
-			    .range(["rgb(12,239,255)","rgb(05,00,49)"]);
-		*/
 			var primeiraIdade = 0;
 			while (1){
 				if (dataset[primeiraIdade].quantidade != "0"){break}
@@ -86,13 +80,9 @@
 			    .range([tamanhoy, 0]);
 
 			var ageScale2 = d3.scale.linear()
-			    //.domain([primeiraIdade, ultimaIdade])
 			    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
 			    .range([0,tamanhox]);
 
-		//console.log(maxQuant);
-		//	var quantScale = d3.scale.log()
-		 //   	.base(Math.E)
 			var quantScale2 = d3.scale.linear()
 			    .domain([0, maxQuant*1.05])
 			    .range([tamanhoy, 0]);

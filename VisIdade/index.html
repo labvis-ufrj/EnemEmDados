@@ -22,15 +22,79 @@
 			      .style("visibility", "hidden")
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
-*/
-			var ageScale; 
-			var quantScale;
-			var gradeScale;
-			      var dataset = [];
+*/		
+
+
+
+
+		     var dataset = [];
 			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 				dataset = data ;
 				console.log(dataset);
 	      
+
+			var tamanhoy = 600;
+
+			var tamanhox = 800;
+
+			var maxQuant = maxVal = minVal = minQuant = 0;
+
+			var subjects = ["geral",
+							"matematica",
+		                    "linguagens",
+		                    "humanas", 
+		                    "natureza",
+		                    "redacao"];
+			
+		    var sub = 0;
+				maxVal = minVal = Number(dataset[0][subjects[0]]);
+			for (sub= 0; sub< subjects.length; sub++){
+				for (indice = 0; indice < dataset.length ; indice++){
+					if (Number(dataset[indice][subjects[sub]]) > maxVal){
+						maxVal = Number(dataset[indice][subjects[sub]]);
+					};
+					if (Number(dataset[indice][subjects[sub]]) < minVal){
+						minVal = Number(dataset[indice][subjects[sub]]);
+					};
+					if (Number(dataset[indice].quantidade) > maxQuant){
+						maxQuant = Number(dataset[indice].quantidade);
+					};
+					if (Number(dataset[indice].quantidade) < minQuant){
+						minQuant = Number(dataset[indice].quantidade);
+					};
+				};
+			};
+		/*	var colorGrades = d3.scale.linear()
+			    .domain([minVal, maxVal])
+			    .range(["rgb(12,239,255)","rgb(05,00,49)"]);
+		*/
+			var primeiraIdade = 0;
+			while (1){
+				if (dataset[primeiraIdade].quantidade != "0"){break}
+				primeiraIdade++;
+			};
+			var ultimaIdade = dataset.length - 1;
+			while (1){
+				if (dataset[ultimaIdade].quantidade != "0"){break}
+				ultimaIdade--;
+			};
+
+			var gradeScale = d3.scale.linear()
+			    .domain([minVal*0.975, maxVal*1.025])
+			    .range([tamanhoy, 0]);
+
+			var ageScale = d3.scale.linear()
+			    //.domain([primeiraIdade, ultimaIdade])
+			    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
+			    .range([0,tamanhox]);
+
+		//console.log(maxQuant);
+		//	var quantScale = d3.scale.log()
+		 //   	.base(Math.E)
+			var quantScale = d3.scale.linear()
+			    .domain([0, maxQuant*1.05])
+			    .range([tamanhoy, 0]);
+
 
 	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
 	        var prod = ["geral",

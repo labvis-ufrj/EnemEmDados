@@ -182,8 +182,8 @@ function update(subject){
 			.data([1])
 			.enter()
 			.transition()
-			.delay(800)
-			.append("path")
+			//.delay(800)
+			//.append("path")
 			.attr("class","lineGrade")
             .attr("d", lineFunction(dataset))
             .attr("fill", "none");        

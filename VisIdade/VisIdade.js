@@ -140,11 +140,11 @@ function VisIdade(subject){
 	      .enter()
 	      .append("circle")
 	      .attr("class", "dotGrade")
-	      .transition()
+	      //.transition()
 	      //.attr("r", 3.5)
 	      .attr("cx", function(d) { return ageScale(Number(d.idade)); })
-	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); })
-	      .duration(600);
+	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); });
+	      //.duration(600);
 	      //.style("fill", function(d) { return "blue"; });
 
 /*
@@ -161,6 +161,12 @@ function VisIdade(subject){
 	      //.attr("cy", function(d) { return gradeScale(Number(d[subject])); });
 */
 }
-function onmouseover(d, i){
+function update(subject){
 
+  	grafico.selectAll(".dotGrade")
+	      .transition()
+	      //.attr("r", 3.5)
+	      .attr("cx", function(d) { return ageScale(Number(d.idade)); })
+	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); })
+	      .duration(600);
 }

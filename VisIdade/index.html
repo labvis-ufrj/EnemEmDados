@@ -23,14 +23,11 @@
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
 */
-
-
 			      var dataset = [];
 			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 				dataset = data ;
 				console.log(dataset);
-	      	var gradeScale;
-	      	var ageScale;
+	      
 
 	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
 	        var prod = ["geral",
@@ -46,9 +43,9 @@
 	        var subject = prod[0];
 
 	        d3.select("#subjectMenu").on("change", function() {
-	        	//grafico.remove();
+	        	grafico.remove();
 	          subject = d3.select("#subjectMenu").property("value");
-	          update(""+subject);
+	          VisIdade(""+subject);
 	        });
 
 	        VisIdade(""+subject);

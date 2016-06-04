@@ -50,11 +50,11 @@ function VisIdade(subject){
 		ultimaIdade--;
 	};
 
-	gradeScale = d3.scale.linear()
+	var gradeScale = d3.scale.linear()
 	    .domain([minVal*0.975, maxVal*1.025])
 	    .range([tamanhoy, 0]);
 
-	ageScale = d3.scale.linear()
+	var ageScale = d3.scale.linear()
 	    //.domain([primeiraIdade, ultimaIdade])
 	    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
 	    .range([0,tamanhox]);
@@ -161,12 +161,6 @@ function VisIdade(subject){
 	      //.attr("cy", function(d) { return gradeScale(Number(d[subject])); });
 */
 }
-function update(subject){
+function onmouseover(d, i){
 
-  	grafico.selectAll(".dotGrade")
-	      .transition()
-	      //.attr("r", 3.5)
-	      .attr("cx", function(d) { return ageScale(Number(d.idade)); })
-	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); });
-	      .duration(600);
 }

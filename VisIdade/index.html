@@ -28,6 +28,9 @@
 
 
 		     var dataset = [];
+		     var ageScale;
+		     var gradeScale;
+		     var quantScale;
 			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 				dataset = data ;
 				console.log(dataset);
@@ -79,11 +82,11 @@
 				ultimaIdade--;
 			};
 
-			var gradeScale = d3.scale.linear()
+			var gradeScale2 = d3.scale.linear()
 			    .domain([minVal*0.975, maxVal*1.025])
 			    .range([tamanhoy, 0]);
 
-			var ageScale = d3.scale.linear()
+			var ageScale2 = d3.scale.linear()
 			    //.domain([primeiraIdade, ultimaIdade])
 			    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
 			    .range([0,tamanhox]);
@@ -91,10 +94,14 @@
 		//console.log(maxQuant);
 		//	var quantScale = d3.scale.log()
 		 //   	.base(Math.E)
-			var quantScale = d3.scale.linear()
+			var quantScale2 = d3.scale.linear()
 			    .domain([0, maxQuant*1.05])
 			    .range([tamanhoy, 0]);
 
+
+			 ageScale = ageScale2;
+			 gradeScale = gradeScale2;
+			 quantScale = quantScale2;
 
 	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
 	        var prod = ["geral",

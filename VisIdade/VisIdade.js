@@ -60,7 +60,7 @@ function VisIdade(subject){
 			.y(function(d){return gradeScale(Number(d[subject])); })
 			.interpolate("linear");
 
-	grafico.selectAll(".lineGrade")
+	grafico.selectAll("lineGrade")
 			.data([1])
 			.enter()
 			.append("path")

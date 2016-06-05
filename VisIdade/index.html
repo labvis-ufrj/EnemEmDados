@@ -80,8 +80,10 @@
 			    .range([tamanhoy, 0]);
 
 			var ageScale2 = d3.scale.linear()
-			    .domain([Number(dataset[0].idade)-1,Number(dataset[dataset.length-1].idade)+1])
+			    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
 			    .range([0,tamanhox]);
+
+
 
 			var quantScale2 = d3.scale.linear()
 			    .domain([0, maxQuant*1.05])

@@ -17,11 +17,24 @@
 
 			  var tooltip = d3.select("body")
 			      .append("div")
+			      .append("rect")
+			      .attr("width",100)
+			      .attr("heigth",50)
+			      .style("fill", "grey")
 			      .style("position", "absolute")
 			      .style("z-index", "10")
 			      .style("visibility", "hidden")
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
+/*
+			      tooltip.append("rect")
+			      .attr("width",100)
+			      .attr("heigth",50)
+			      .style("fill", "grey")
+			      .style("position", "absolute")
+			      .style("z-index", "10")
+			      .style("visibility", "hidden")
+*/
 
 		    var dataset = [];
 		    var quantScale;

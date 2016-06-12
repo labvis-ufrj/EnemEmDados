@@ -10,7 +10,7 @@
 	fill: grey;
 }
 .dotLinguagens{
-	fill: none;
+	fill: transparent;
 	stroke: grey;
 	stroke-width: 3px;
 }
@@ -20,7 +20,7 @@
 	stroke-width: 2px;
 }
 .dotNatureza{
-	fill: none;
+	fill: transparent;
 	stroke: grey;
 	stroke-width: 2px;
 }

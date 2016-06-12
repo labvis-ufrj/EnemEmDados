@@ -23,19 +23,55 @@
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
 
-			      var dataset = [];
+		    var dataset = [];
+		    var quantScale;
+		    //var stateScale2;
+		    var stateScale;
+		    var gradeScale;
+	      	var tamanhoy = 600;
+			var tamanhox = 800;
+		 
+			var maxQuant = maxVal = minVal = minQuant = 0;
+
 			d3.csv("tabelaVisGeral.csv",function(data){
 				dataset = data ;
+
+			var reordenar = function(subject){
+	          console.log(subject);
+	          	var dados = dataset;
+				function compare2(a,b) {
+
+				  if (Number(a[subject]) < Number(b[subject]))
+				    return -1;
+				  else if (Number(a[subject]) > Number(b[subject]))
+				    return 1;
+				  else 
+				    return 0;
+				}
+
+				dados.sort(compare2);
+				return dados;
+			};
+				function compare(a,b) {
+				  if (a["estado"] < b["estado"])
+				    return -1;
+				  else if (a["estado"] > b["estado"])
+				    return 1;
+				  else 
+				    return 0;
+				}
+
+				dataset.sort(compare);
 				console.log(dataset);
 	      
-/*
+
 	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
-	        var prod = [//"geral",
-	                    "linguagens",
-	                    "humanas", 
-	                    "natureza",
-	                    "redacao",
-	                    "matematica"];
+	        var prod = ["estado",
+	                    "Linguagens",
+	                    "Humanas", 
+	                    "Natureza",
+	                    "Redacao",
+	                    "Matematica"];
 	        subjectMenu.selectAll("option").data(prod).enter().append("option")
 	          .attr("value", function (d) { return d })
 	          .text(function (d) { return d });
@@ -43,11 +79,55 @@
 	        var subject = prod[0];
 
 	        d3.select("#subjectMenu").on("change", function() {
-	        	grafico.remove();
-	          subject = d3.select("#subjectMenu").property("value");
-	          VisGeral();
+	          subject = d3.select("#subjectMenu").property("value") + "";
+	          var dados = reordenar(subject)
+	          VisGeralUpdate(dados);
 	        });
-*/
+
+
+
+
+			var subjects = ["Matematica",
+			                    "Linguagens",
+			                    "Humanas", 
+			                    "Natureza",
+			                    "Redacao"];
+			
+
+		    var sub = 0;
+				maxVal = minVal = Number(dataset[0][subjects[0]]);
+			for (sub= 0; sub< subjects.length; sub++){
+				for (indice = 0; indice < dataset.length ; indice++){
+					if (Number(dataset[indice][subjects[sub]]) > maxVal){
+						maxVal = Number(dataset[indice][subjects[sub]]);
+					};
+					if (Number(dataset[indice][subjects[sub]]) < minVal){
+						minVal = Number(dataset[indice][subjects[sub]]);
+					};
+					if (Number(dataset[indice].quantidade) > maxQuant){
+						maxQuant = Number(dataset[indice].quantidade);
+					};
+					if (Number(dataset[indice].quantidade) < minQuant){
+						minQuant = Number(dataset[indice].quantidade);
+					};
+				};
+			};
+			
+			gradeScale = d3.scale.linear()
+			    .domain([300, 600])
+			    .range([tamanhoy, 0]);
+
+			stateScale = d3.scale.linear()
+			    .domain([-1, dataset.length])
+			    .range([0,tamanhox]);
+
+
+
+			quantScale = d3.scale.linear()
+			    .domain([0, maxQuant*1.05])
+			    .range([tamanhoy, 0]);
+	        
+
 	        VisGeral();
 	      });
 

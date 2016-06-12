@@ -3,70 +3,6 @@
 
 
 function VisGeral(){
-
-	var tamanhoy = 600;
-	var tamanhox = 800;
- 
-	var maxQuant = maxVal = minVal = minQuant = 0;
-
-	var subjects = ["Matematica",
-	                    "Linguagens",
-	                    "Humanas", 
-	                    "Natureza",
-	                    "Redacao"];
-	
-
-    var sub = 0;
-		maxVal = minVal = Number(dataset[0][subjects[0]]);
-	for (sub= 0; sub< subjects.length; sub++){
-		for (indice = 0; indice < dataset.length ; indice++){
-			if (Number(dataset[indice][subjects[sub]]) > maxVal){
-				maxVal = Number(dataset[indice][subjects[sub]]);
-			};
-			if (Number(dataset[indice][subjects[sub]]) < minVal){
-				minVal = Number(dataset[indice][subjects[sub]]);
-			};
-			if (Number(dataset[indice].quantidade) > maxQuant){
-				maxQuant = Number(dataset[indice].quantidade);
-			};
-			if (Number(dataset[indice].quantidade) < minQuant){
-				minQuant = Number(dataset[indice].quantidade);
-			};
-		};
-	};
-/*	var colorGrades = d3.scale.linear()
-	    .domain([minVal, maxVal])
-	    .range(["rgb(12,239,255)","rgb(05,00,49)"]);
-*/
-/*
-	var primeiraIdade = 0;
-	while (1){
-		if (dataset[primeiraIdade].quantidade != "0"){break}
-		primeiraIdade++;
-	};
-	var ultimaIdade = dataset.length - 1;
-	while (1){
-		if (dataset[ultimaIdade].quantidade != "0"){break}
-		ultimaIdade--;
-	};
-*/
-	var gradeScale = d3.scale.linear()
-	    //.domain([minVal*0.95, maxVal*1.05])
-	    .domain([300, 600])
-	    .range([tamanhoy, 0]);
-
-	var stateScale = d3.scale.linear()
-	    //.domain([primeiraIdade, ultimaIdade])
-	    .domain([-1, dataset.length])
-	    .range([0,tamanhox]);
-
-//console.log(maxQuant);
-//	var quantScale = d3.scale.log()
- //   	.base(Math.E)
-	var quantScale = d3.scale.linear()
-	    .domain([0, maxQuant*1.05])
-	    .range([tamanhoy, 0]);
-
 	grafico = vis.selectAll("g")
 			.data([0])
 		   	.enter()
@@ -76,10 +12,6 @@ function VisGeral(){
 	grafico.data(dataset)
 		    .enter();
 
-
-	 // ageScale.domain(d3.extent(dataset, function(d) { return Number(d.idade); })).nice();
-	 // quantScale.domain(d3.extent(dataset, function(d) { return Number(d.quantidade); })).nice();
-
 	var xAxis = d3.svg.axis()
 	    .scale(stateScale)
 	    .orient("bottom")
@@ -88,58 +20,11 @@ function VisGeral(){
 	var yAxis = d3.svg.axis()
 	    .scale(gradeScale)
 	    .orient("left");
-//	    .tickFormat(function(d) { return "" + Math.round(d); });
-	/*
-	var zAxis = d3.svg.axis()
-	    .scale(gradeScale)
-	    .orient("right");
-	*/
-	/*
-	grafico.append("g")
-	      .attr("class", "x-axis")
-	      .attr("transform", "translate(0," + tamanhoy + ")")
-	      .call(xAxis);
-*/
+
 	grafico.append("g")
 	      .attr("class", "y-axis")
 	      .call(yAxis);
 
-/*
-	grafico.append("g")
-	      .attr("class", "z-axis")
-	      .attr("transform", "translate(" + tamanhox + ", 0)")
-	      .call(zAxis);
-	      //.style("fill","blue");
-  */	
-  	/*
-  	grafico.selectAll(".dotQuant")
-	      .data(dataset)
-	      .enter()
-	      .append("rect")
-	      .attr("class", "dotQuant")
-	      //.attr("r", 3.5)
-	      .attr("x", function(d) { return ageScale(Number(d.idade)) - (ageScale(Number(dataset[2].idade)) - ageScale(Number(dataset[1].idade))/2); })
-	      .attr("y", function(d) { 
-	      	if (Number(d.quantidade) == 0){return 0;}
-	      	return quantScale(Number(d.quantidade)); 
-	      })
-	      .attr("width", function(){ return ageScale(Number(dataset[2].idade)) - ageScale(Number(dataset[1].idade));})
-	      .attr("height",function(d, i){ return tamanhoy - quantScale(Number(d.quantidade));});
-	      //.style("fill", function(d) { return "brown"; });
-
-	var lineFunction = d3.svg.line()
-			.x(function(d){return ageScale(Number(d.idade)); })
-			.y(function(d){return gradeScale(Number(d[subject])); })
-			.interpolate("linear");
-
-	grafico.selectAll("lineGrade")
-			.data([1])
-			.enter()
-			.append("path")
-			.attr("class","lineGrade")
-            .attr("d", lineFunction(dataset))
-            .attr("fill", "none");
-  	*/
 
   	grafico.selectAll(".dotLines")
 		.data(dataset)
@@ -153,13 +38,13 @@ function VisGeral(){
 		
 
 
-
   	grafico.selectAll(".dotLinguagens")
 	      .data(dataset)
 	      .enter()
 	      .append("rect")
 	      .attr("class", "dotLinguagens")
-	      //.attr("r", 3.5)
+		  .attr("width", 10)
+	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
 	      .attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
 	      .on("mouseover", function(d, i){
@@ -174,14 +59,13 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  });
-	      //.style("fill", function(d) { return "blue"; });
-
+	    
 	grafico.selectAll(".dotHumanas")
 	      .data(dataset)
 	      .enter()
 	      .append("circle")
 	      .attr("class", "dotHumanas")
-	      //.attr("r", 3.5)
+	      .attr("r", 3.5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
 	      .on("mouseover", function(d, i){
@@ -202,7 +86,7 @@ function VisGeral(){
 	      .enter()
 	      .append("circle")
 	      .attr("class", "dotNatureza")
-	      //.attr("r", 3.5)
+	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
 	      .on("mouseover", function(d, i){
@@ -221,11 +105,12 @@ function VisGeral(){
 	grafico.selectAll(".dotMatematica")
 	      .data(dataset)
 	      .enter()
-	      .append("circle")
+	      .append("rect")
 	      .attr("class", "dotMatematica")
-	      //.attr("r", 3.5)
-	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
-	      .attr("cy", function(d) { return gradeScale(Number(d["Matematica"])); })
+		  .attr("width", 10)
+	      .attr("height", 10)
+	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
+	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Matematica: " + d["Matematica"]});
@@ -238,6 +123,43 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  });
+
+
+	grafico.selectAll(".dotRedacao")
+	      .data(dataset)
+	      .enter()
+	      .append("polygon")
+	      .attr("class", "dotRedacao")
+	      .attr("points", function(d, i){
+		    	var point = [];
+		    	var lado = 10
+		    	point[1] = (stateScale(Number( i )) - lado/2) + ','
+		    	point[2] = gradeScale(Number(d["Redacao"])) + ' '
+		    	point[3] = (stateScale(Number( i )) + lado/2) + ','
+		    	point[4] = (gradeScale(Number(d["Redacao"]))) + ' '
+		    	point[5] = (stateScale(Number( i ))) + ','
+		    	point[6] = (gradeScale(Number(d["Redacao"])) - lado*1.85/2) + '' 
+		    	
+		    	
+		    	var points = '';
+
+		    	for (i = 1; i < point.length; i++) { 
+				    points += point[i];
+				}
+		    	return points})
+	      .on("mouseover", function(d, i){
+	      	return tooltip.style("visibility", "visible")
+	      					.text(function(e){ return "Matematica: " + d["Redacao"]});
+	      })
+  	      .on("mouseout", function(d, i){
+	      	return tooltip.style("visibility", "hidden")
+	      					.text(function(e){ return ""});
+	      })
+	      .on("mousemove", function(){
+        	return tooltip.style("top",  (event.pageY-10)+"px")
+    			            .style("left", (event.pageX+10)+"px");
+      	  });
+
 
 
   	grafico.selectAll(".textLabels")
@@ -259,6 +181,91 @@ function VisGeral(){
 		.attr("y2", tamanhoy)
 		.attr("class", "lineX");
 }
-function onmouseover(d, i){
 
+
+
+
+
+
+
+
+function VisGeralUpdate(dados){
+
+
+ 	var stateScale2 = function(d){
+		for (var indice = 0; indice < dados.length; indice++){
+			if (d === dados[indice]){ return indice;};
+		};
+		return 0;
+	};
+  	grafico.selectAll(".dotLines")
+  		.transition()
+		.attr("x1", function(d, i) { return stateScale(Number( stateScale2(d) )); })     // x position of the first end of the line
+		.attr("y1", 0)      // y position of the first end of the line
+		.attr("x2", function(d, i) { return stateScale(Number( stateScale2(d) )); })     // x position of the second end of the line
+		.attr("y2", tamanhoy)
+		.delay(function(d, i){return 80*i;})
+		.duration(1000);
+		
+  	grafico.selectAll(".dotLinguagens")
+  		  .transition()
+	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
+	      .attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
+	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+	      //.style("fill", function(d) { return "blue"; });
+
+	grafico.selectAll(".dotHumanas")
+		  .transition()
+	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
+	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
+	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+
+	grafico.selectAll(".dotNatureza")
+		  .transition()
+	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
+	      .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
+	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+
+	grafico.selectAll(".dotMatematica")
+		  .transition()
+	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
+	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
+	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+
+	grafico.selectAll(".dotRedacao")
+		  .transition()
+	      .attr("points", function(d, i){
+		    	var point = [];
+		    	var lado = 10
+		    	point[1] = (stateScale(Number( stateScale2(d) )) - lado/2) + ','
+		    	point[2] = gradeScale(Number(d["Redacao"])) + ' '
+		    	point[3] = (stateScale(Number( stateScale2(d) )) + lado/2) + ','
+		    	point[4] = (gradeScale(Number(d["Redacao"]))) + ' '
+		    	point[5] = (stateScale(Number( stateScale2(d) ))) + ','
+		    	point[6] = (gradeScale(Number(d["Redacao"])) - lado*1.85/2) + '' 
+		    	
+		    	
+		    	var points = '';
+
+		    	for (var i = 1; i < point.length; i++) { 
+				    points += point[i];
+				}
+		    	return points})
+	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+
+
+
+  	grafico.selectAll(".textLabels")
+  		  .transition()
+	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )); })
+	      .attr("y", tamanhoy + 20)
+  	      .delay(function(d, i){return 80*i;})
+	      .duration(1000);
+
+console.log(dados);
 }

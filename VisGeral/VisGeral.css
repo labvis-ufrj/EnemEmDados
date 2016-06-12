@@ -5,28 +5,29 @@
 }
 .dotMatematica{
 	fill: blue;
-	r: 3.5;
-	stroke: grey;
-	stroke-width: 2px;
+	stroke: none;
+	stroke-width: 0px
+	fill: grey;
 }
 .dotLinguagens{
-	fill: transparent;
-	width:10px;
-	height: 10px;
+	fill: none;
 	stroke: grey;
-	stroke-width: 2px;
+	stroke-width: 3px;
 }
 .dotHumanas{
 	fill: green;
-	r: 3.5;
 	stroke: grey;
 	stroke-width: 2px;
 }
 .dotNatureza{
-	fill: yellow;
-	r: 3.5;
+	fill: none;
 	stroke: grey;
 	stroke-width: 2px;
+}
+.dotRedacao{
+	fill: yellow;
+	stroke: grey;
+	stroke-width: 1px;
 }
 
 .x-axis{

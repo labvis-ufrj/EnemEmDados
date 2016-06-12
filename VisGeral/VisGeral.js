@@ -149,7 +149,7 @@ function VisGeral(){
 		    	return points})
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
-	      					.text(function(e){ return "Matematica: " + d["Redacao"]});
+	      					.text(function(e){ return "Redacao: " + d["Redacao"]});
 	      })
   	      .on("mouseout", function(d, i){
 	      	return tooltip.style("visibility", "hidden")

@@ -65,7 +65,7 @@ function VisGeral(){
 	      .enter()
 	      .append("circle")
 	      .attr("class", "dotHumanas")
-	      .attr("r", 3.5)
+	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
 	      .on("mouseover", function(d, i){

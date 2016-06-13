@@ -46,7 +46,7 @@ function VisGeral(){
 		  .attr("width", 10)
 	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
-	      .attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
+	      .attr("y", tamanhoy) //function(d) { return gradeScale(Number(d["Linguagens"])); })
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Linguagens: " + d["Linguagens"]});
@@ -58,7 +58,13 @@ function VisGeral(){
 	      .on("mousemove", function(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
-      	  });
+      	  })
+      	.style("visibility", "hidden")
+      	  .transition()
+      	  .style("visibility", "visible")
+      	.attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
+		.delay(function(d, i){return 100*1;})
+		.duration(800);;
 	    
 	grafico.selectAll(".dotHumanas")
 	      .data(dataset)
@@ -67,7 +73,7 @@ function VisGeral(){
 	      .attr("class", "dotHumanas")
 	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
-	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
+	      .attr("cy", tamanhoy) //function(d) { return gradeScale(Number(d["Humanas"])); })
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Humanas: " + d["Humanas"]});
@@ -79,7 +85,13 @@ function VisGeral(){
 	      .on("mousemove", function(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
-      	  });
+      	  })
+  		  .style("visibility", "hidden")
+      	  .transition()
+      	  .style("visibility", "visible")
+  		  .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
+		  .delay(function(d, i){return 350*1;})
+		  .duration(800);
 
 	grafico.selectAll(".dotNatureza")
 	      .data(dataset)
@@ -88,7 +100,7 @@ function VisGeral(){
 	      .attr("class", "dotNatureza")
 	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
-	      .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
+	      .attr("cy", tamanhoy) //function(d) { return gradeScale(Number(d["Natureza"])); })
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Natureza: " + d["Natureza"]});
@@ -100,7 +112,13 @@ function VisGeral(){
 	      .on("mousemove", function(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
-      	  });
+      	  })
+      	  .style("visibility", "hidden")
+      	  .transition()
+      	  .style("visibility", "visible")
+      	  .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
+		  .delay(function(d, i){return 600*1;})
+		  .duration(800);
 
 	grafico.selectAll(".dotMatematica")
 	      .data(dataset)
@@ -110,7 +128,7 @@ function VisGeral(){
 		  .attr("width", 10)
 	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
-	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
+	      .attr("y", tamanhoy) //function(d) { return gradeScale(Number(d["Matematica"])); })
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Matematica: " + d["Matematica"]});
@@ -122,7 +140,13 @@ function VisGeral(){
 	      .on("mousemove", function(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
-      	  });
+      	  })
+      	  .style("visibility", "hidden")
+      	  .transition()
+      	  .style("visibility", "visible")
+  	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
+		  .delay(function(d, i){return 850*1;})
+		  .duration(800);
 
 
 	grafico.selectAll(".dotRedacao")
@@ -130,6 +154,38 @@ function VisGeral(){
 	      .enter()
 	      .append("polygon")
 	      .attr("class", "dotRedacao")
+	      .attr("points", function(d, i){
+		    	var point = [];
+		    	var lado = 10
+		    	point[1] = (stateScale(Number( i )) - lado/2) + ','
+		    	point[2] = tamanhoy + ' ' //gradeScale(Number(d["Redacao"])) + ' '
+		    	point[3] = (stateScale(Number( i )) + lado/2) + ','
+		    	point[4] = tamanhoy + ' ' //(gradeScale(Number(d["Redacao"]))) + ' '
+		    	point[5] = (stateScale(Number( i ))) + ','
+		    	point[6] = tamanhoy + ' ' //(gradeScale(Number(d["Redacao"])) - lado*1.85/2) + '' 
+		    	
+		    	
+		    	var points = '';
+
+		    	for (i = 1; i < point.length; i++) { 
+				    points += point[i];
+				}
+		    	return points})//return stateScale(Number( i )) + ',' + tamanhoy;})
+	      .on("mouseover", function(d, i){
+	      	return tooltip.style("visibility", "visible")
+	      					.text(function(e){ return "Redacao: " + d["Redacao"]});
+	      })
+  	      .on("mouseout", function(d, i){
+	      	return tooltip.style("visibility", "hidden")
+	      					.text(function(e){ return ""});
+	      })
+	      .on("mousemove", function(){
+        	return tooltip.style("top",  (event.pageY-10)+"px")
+    			            .style("left", (event.pageX+10)+"px");
+      	  })
+      	  .style("visibility", "hidden")
+      	  .transition()
+      	  .style("visibility", "visible")
 	      .attr("points", function(d, i){
 		    	var point = [];
 		    	var lado = 10
@@ -143,22 +199,12 @@ function VisGeral(){
 		    	
 		    	var points = '';
 
-		    	for (i = 1; i < point.length; i++) { 
+		    	for (var i = 1; i < point.length; i++) { 
 				    points += point[i];
 				}
 		    	return points})
-	      .on("mouseover", function(d, i){
-	      	return tooltip.style("visibility", "visible")
-	      					.text(function(e){ return "Redacao: " + d["Redacao"]});
-	      })
-  	      .on("mouseout", function(d, i){
-	      	return tooltip.style("visibility", "hidden")
-	      					.text(function(e){ return ""});
-	      })
-	      .on("mousemove", function(){
-        	return tooltip.style("top",  (event.pageY-10)+"px")
-    			            .style("left", (event.pageX+10)+"px");
-      	  });
+	      .delay(function(d, i){return 1100*1;})
+	      .duration(800);
 
 
 
@@ -204,14 +250,14 @@ function VisGeralUpdate(dados){
 		.attr("y1", 0)      // y position of the first end of the line
 		.attr("x2", function(d, i) { return stateScale(Number( stateScale2(d) )); })     // x position of the second end of the line
 		.attr("y2", tamanhoy)
-		.delay(function(d, i){return 80*i;})
+		.delay(function(d, i){return 120*i;})
 		.duration(1000);
 		
   	grafico.selectAll(".dotLinguagens")
   		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
 	      .attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
-	      .delay(function(d, i){return 80*i;})
+	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 	      //.style("fill", function(d) { return "blue"; });
 
@@ -219,21 +265,21 @@ function VisGeralUpdate(dados){
 		  .transition()
 	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
-	      .delay(function(d, i){return 80*i;})
+	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
 	grafico.selectAll(".dotNatureza")
 		  .transition()
 	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
-	      .delay(function(d, i){return 80*i;})
+	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
 	grafico.selectAll(".dotMatematica")
 		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
 	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
-	      .delay(function(d, i){return 80*i;})
+	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
 	grafico.selectAll(".dotRedacao")
@@ -255,7 +301,7 @@ function VisGeralUpdate(dados){
 				    points += point[i];
 				}
 		    	return points})
-	      .delay(function(d, i){return 80*i;})
+	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
 
@@ -264,7 +310,7 @@ function VisGeralUpdate(dados){
   		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("y", tamanhoy + 20)
-  	      .delay(function(d, i){return 80*i;})
+  	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
 console.log(dados);

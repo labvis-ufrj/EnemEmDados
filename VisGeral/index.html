@@ -42,15 +42,25 @@
 	          console.log(subject);
 	          	var dados = dataset;
 				function compare2(a,b) {
-
-				  if (Number(a[subject]) < Number(b[subject]))
-				    return -1;
-				  else if (Number(a[subject]) > Number(b[subject]))
-				    return 1;
-				  else 
-				    return 0;
+					if (subject != "estado"){
+						if (Number(a[subject]) < Number(b[subject]))
+						    return -1;
+						else if (Number(a[subject]) > Number(b[subject]))
+						    return 1;
+						else 
+						    return 0;
+					}
+				
+					else{
+						if (a["estado"] < b["estado"])
+						    return -1;
+						else if (a["estado"] > b["estado"])
+						    return 1;
+						else 
+						    return 0;
+							
+					}
 				}
-
 				dados.sort(compare2);
 				return dados;
 			};

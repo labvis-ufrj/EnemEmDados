@@ -3,15 +3,46 @@
 		<meta charset="UTF-8">
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="VisIdade.js"></script>
+		<link href="../bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="VisIdade.css"/>
+		<link href="../template.css" rel="stylesheet">
 	</head>
 	<body>
+
+
+	<link href="../template.css" rel="stylesheet">
+	    <div class="container">
+		    <div class="header clearfix">
+		    	<div class="links">
+			        <nav>
+			        	<ul class="nav nav-pills pull-left">
+			        		<li ><a href="../index.html">VisEnem</a></li>
+				            <li ><a href="../VisMapa/index.html"><img src="../map.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+				            <li role="presentation"><a href="../VisGeral/index.html"><img src="../Dispersao.jpg" alt="Dispersao" width="40" height="40" border="0"></a></li>
+			            	<li role="presentation" class="active"><a href="../VisIdade/index.html"><img src="../idade.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="logos">
+					<nav>
+				        <ul class="nav nav-pills pull-right">
+					        <li role="presentation"><a href="#">Home</a></li>
+					        <li role="presentation"><a href="http://heitortomaz.github.io/EnemGit/VisMapa">About</a></li>
+					        <li role="presentation"><a href="#">Contact</a></li>
+				        </ul>
+			        </nav> 
+			    </div>
+			</div>
+	    </div>
+
+
 		<div id="menus"></div>
+		<div align="center" class="visualizacao"></div>
 		<script type="text/javascript">
 
-			var vis = d3.select("body").append("svg")
+			var vis = d3.select("div.visualizacao").append("svg")
 		         .attr("width", 1000)
-		         .attr("height",1000);
+		         .attr("height",800);
 
 /*
 			  var tooltip = d3.select("body")
@@ -22,7 +53,7 @@
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
 */		
-
+			var subject;
 			var tamanhoy = 600;
 
 			var tamanhox = 800;
@@ -31,8 +62,9 @@
 		     var ageScale;
 		     var gradeScale;
 		     var quantScale;
-
-			d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
+		     console.log(ageScale);
+			//d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
+			d3.csv("./estados/geral.csv",function(data){	
 				dataset = data ;
 				console.log(dataset);
 	      
@@ -80,7 +112,7 @@
 			    .range([tamanhoy, 0]);
 
 			var ageScale2 = d3.scale.linear()
-			    .domain([dataset[0].idade,dataset[dataset.length-1].idade])
+			    .domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
 			    .range([0,tamanhox]);
 
 
@@ -94,6 +126,111 @@
 			 gradeScale = gradeScale2;
 			 quantScale = quantScale2;
 
+
+	        var subjectMenu = d3.select("#menus").append("select").attr("id", "stateMenu");
+	        var prod = ["geral",	
+	        			"AC",	 
+						"AL",	 
+						"AM",	 
+						"AP",	 
+						"BA",	 
+						"CE",	 
+						"DF",	 
+						"ES",	 
+						"GO",	 
+						"MA",	 
+						"MG",	 
+						"MS",	 
+						"MT",	 
+						"PA",	 
+						"PB",	 
+						"PE",	 
+						"PI",	 
+						"PR",	 
+						"RJ",	 
+						"RN",	 
+						"RO",	 
+						"RR",	 
+						"RS",	 
+						"SC",	 
+						"SE",	 
+						"SP",	 
+						"TO"];
+
+	        subjectMenu.selectAll("option").data(prod).enter().append("option")
+	          	.attr("value", function (d) { return d })
+	          	.text(function (d) { return d });
+
+	        var subject = prod[0];
+
+	        d3.select("#stateMenu").on("change", function() {
+	        	//grafico.remove();
+				
+				//grafico.remove();
+
+	          	state = d3.select("#stateMenu").property("value");
+	          	//update(""+subject);
+				d3.csv("./estados/" + state + ".csv" ,function(data){
+					dataset = data ;
+					console.log(dataset);
+
+			
+				     sub = maxQuant = 0;
+						maxVal = minVal = Number(dataset[0][subject]);
+					for (sub= 0; sub< subjects.length; sub++){
+						for (indice = 0; indice < dataset.length ; indice++){
+							if (Number(dataset[indice][subjects[sub]]) > maxVal){
+								maxVal = Number(dataset[indice][subjects[sub]]);
+							};
+							if (Number(dataset[indice][subjects[sub]]) < minVal){
+								minVal = Number(dataset[indice][subjects[sub]]);
+							};
+							if (Number(dataset[indice].quantidade) > maxQuant){
+								maxQuant = Number(dataset[indice].quantidade);
+							};
+							if (Number(dataset[indice].quantidade) < minQuant){
+								minQuant = Number(dataset[indice].quantidade);
+							};
+						};
+					};
+					 primeiraIdade = 0;
+					while (1){
+						if (dataset[primeiraIdade].quantidade != "0"){break}
+						primeiraIdade++;
+					};
+					 ultimaIdade = dataset.length - 1;
+					while (1){
+						if (dataset[ultimaIdade].quantidade != "0"){break}
+						ultimaIdade--;
+					};
+
+					 gradeScale2 = d3.scale.linear()
+					    .domain([minVal*0.975, maxVal*1.025])
+					    .range([tamanhoy, 0]);
+
+					 ageScale2 = d3.scale.linear()
+			    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+					    .range([0,tamanhox]);
+
+
+					console.log(maxQuant)
+					 quantScale2 = d3.scale.linear()
+					    .domain([0, maxQuant*1.05])
+					    .range([tamanhoy, 0]);
+
+
+					 ageScale = ageScale2;
+					 gradeScale = gradeScale2;
+					 quantScale = quantScale2;
+
+				
+	        		//VisIdade(""+subject, dataset);
+	        		update("" + subject);
+	        	});
+
+	        });
+
+
 	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
 	        var prod = ["geral",
 	                    "linguagens",
@@ -105,7 +242,7 @@
 	          .attr("value", function (d) { return d })
 	          .text(function (d) { return d });
 
-	        var subject = prod[0];
+	        subject = prod[0];
 
 	        d3.select("#subjectMenu").on("change", function() {
 	        	//grafico.remove();
@@ -113,12 +250,12 @@
 	          update(""+subject);
 	        });
 
-	        VisIdade(""+subject);
-	      });
+	        VisIdade(""+subject, dataset);
+	    });
 
 
 
 
-		</script>>
+		</script>
 	</body>
 </body>

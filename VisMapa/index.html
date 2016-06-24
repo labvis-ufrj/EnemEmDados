@@ -3,17 +3,47 @@
 		<meta charset="UTF-8">
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="VisMap.js"></script>
+		<link href="../bootstrap.min.css" rel="stylesheet">	
+		<link href="../template.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="VisMap.css"/>
 	</head>
 	<body>
+
+	    <div class="container">
+		    <div class="header clearfix">
+		    	<div class="links">
+			        <nav>
+			        	<ul class="nav nav-pills pull-left">
+			        		<li ><a href="../index.html">VisEnem</a></li>
+				            <li class="active"><a href="../VisMapa/index.html" ><img src="../map.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+				            <li role="presentation"><a href="../VisGeral/index.html"><img src="../Dispersao.jpg" alt="Dispersao" width="40" height="40" border="0"></a></li>
+			            	<li role="presentation"><a href="../VisIdade/index.html"><img src="../idade.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="logos">
+					<nav>
+				        <ul class="nav nav-pills pull-right">
+					        <li role="presentation"><a href="#">Home</a></li>
+					        <li role="presentation"><a href="http://heitortomaz.github.io/EnemGit/VisMapa">About</a></li>
+					        <li role="presentation"><a href="#">Contact</a></li>
+				        </ul>
+			        </nav> 
+			    </div>
+			</div>
+	    </div>
+
+
 		<div id="menus"></div>
+		<div align="center" class="visualizacao"></div>
 		<script type="text/javascript">
 			var raio = 40;
 			var dx = raio * 1.85;
 			var dy = raio * 2.25;
 			
-			var vis = d3.select("body").append("svg")
+			var vis = d3.select("div.visualizacao").append("svg")
 		         .attr("width", 1000)
-		         .attr("height",1000);
+		         .attr("height",800);
 
 
 

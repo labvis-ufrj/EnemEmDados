@@ -235,7 +235,15 @@ function VisGeral(){
 
 
 
-function VisGeralUpdate(dados){
+function VisGeralUpdate(dados, sub){
+console.log(sub)
+	grafico.selectAll(".active")
+		.classed("active", false);
+
+
+	grafico.selectAll(".dot"+ sub)
+		.classed("active", true);
+
 
 
  	var stateScale2 = function(d){

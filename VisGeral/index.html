@@ -3,15 +3,46 @@
 		<meta charset="UTF-8">
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="VisGeral.js"></script>
+		<link href="../bootstrap.min.css" rel="stylesheet">
+		<link href="../template.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="VisGeral.css"/>
 	</head>
 	<body>
+
+
+
+	    <div class="container">
+		    <div class="header clearfix">
+		    	<div class="links">
+			        <nav>
+			        	<ul class="nav nav-pills pull-left">
+			        		<li ><a href="../index.html">VisEnem</a></li>
+				            <li ><a href="../VisMapa/index.html"><img src="../map.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+				            <li role="presentation" class="active"><a href="../VisGeral/index.html"><img src="../Dispersao.jpg" alt="Dispersao" width="40" height="40" border="0"></a></li>
+			            	<li role="presentation"><a href="../VisIdade/index.html"><img src="../idade.jpg" alt="Vis Map" width="40" height="40" border="0"></a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="logos">
+					<nav>
+				        <ul class="nav nav-pills pull-right">
+					        <li role="presentation"><a href="#">Home</a></li>
+					        <li role="presentation"><a href="http://heitortomaz.github.io/EnemGit/VisMapa">About</a></li>
+					        <li role="presentation"><a href="#">Contact</a></li>
+				        </ul>
+			        </nav> 
+			    </div>
+			</div>
+	    </div>
+
+
 		<div id="menus"></div>
+		<div align="center" class="visualizacao"></div>
 		<script type="text/javascript">
 
-			var vis = d3.select("body").append("svg")
+			var vis = d3.select("div.visualizacao").append("svg")
 		         .attr("width", 1000)
-		         .attr("height",1000);
+		         .attr("height",800);
 
 
 
@@ -92,8 +123,8 @@
 
 	        d3.select("#subjectMenu").on("change", function() {
 	          subject = d3.select("#subjectMenu").property("value") + "";
-	          var dados = reordenar(subject)
-	          VisGeralUpdate(dados);
+	          var dados = reordenar(subject);
+	          VisGeralUpdate(dados, subject);
 	        });
 
 

@@ -1,0 +1,29 @@
+body {
+	background: grey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.header {
+  padding-bottom: 20px;
+  color: white;
+}
+.pull-left{
+    background-color:#000000;
+    color:#ffffff;
+    border-radius:0;
+}
+.pull-right{
+    background-color:#000000;
+    color:#ffffff;
+    border-radius:0;
+}
+.pull-left > li > a {
+    color:#fff;
+}
+.pull-left > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.pull-left {
+    color:#eeeeee;
+}

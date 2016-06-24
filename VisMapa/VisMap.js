@@ -28,7 +28,7 @@ var maxVal = minVal = 0;
 		    .data(dataset)
 		    .enter()
 		    .append("g")
-			.attr("transform",function(d,i){return "translate(0,0)";});
+			.attr("transform",function(d,i){return "translate(150,0)";});
 
 	    map.append("polygon")
 		    .attr("points", function(d){

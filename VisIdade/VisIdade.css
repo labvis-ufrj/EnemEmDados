@@ -1,6 +1,5 @@
 .dotGrade{
 	fill: blue;
-	r: 3.5px;
 }
 .dotQuant{
 	fill: grey;
@@ -20,4 +19,7 @@
 	stroke-width:2px;
 	stroke: blue;
 	fill: transparent;	
+}
+svg{
+	background: white;
 }

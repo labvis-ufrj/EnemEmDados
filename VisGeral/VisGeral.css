@@ -1,33 +1,34 @@
 .dotLines{
 	stroke: grey;
 	stroke-width: 2px;
-	opacity: .2;
+	opacity: .3;
 }
 .dotMatematica{
-	fill: blue;
+	fill: #999999;
 	stroke: none;
 	stroke-width: 0px
 	fill: grey;
 }
 .dotLinguagens{
-	fill: transparent;
-	stroke: grey;
+	fill: none;
+	stroke: #999999;
 	stroke-width: 3px;
 }
 .dotHumanas{
-	fill: green;
-	stroke: grey;
+	fill: #999999;
+	stroke: none;
 	stroke-width: 2px;
 }
 .dotNatureza{
-	fill: transparent;
+	fill: none;
 	stroke: grey;
 	stroke-width: 2px;
 }
 .dotRedacao{
-	fill: yellow;
+	fill: none;
 	stroke: grey;
-	stroke-width: 1px;
+	stroke-width: 2px;
+	opacity: .8;
 }
 
 .x-axis{
@@ -38,6 +39,7 @@
 }
 .y-axis{
 	fill: grey;
+	stroke-width: 2px
 }
 .z-axis{
 	fill: blue;
@@ -50,5 +52,16 @@
 }
 .lineX{
 	stroke: grey;
-	stroke-width: 06px;
+	stroke-width: 2px;
+}
+.active{
+	color: black;
+	fill: black;
+	stroke: black;
+}
+.separate{
+	stroke: black;
+}
+svg{
+	background: white;
 }

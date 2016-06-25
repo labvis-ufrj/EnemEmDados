@@ -3,11 +3,12 @@
 
 
 function VisGeral(){
-	grafico = vis.selectAll("g")
+	grafico = vis.selectAll(".grafico")
 			.data([0])
 		   	.enter()
 		    .append("g")
-			.attr("transform",function(d,i){return "translate(100,50)";});
+		    .attr("class","grafico")
+			.attr("transform",function(d,i){return "translate(550,50)";});
 
 	grafico.data(dataset)
 		    .enter();
@@ -24,6 +25,18 @@ function VisGeral(){
 	grafico.append("g")
 	      .attr("class", "y-axis")
 	      .call(yAxis);
+
+	grafico.selectAll(".domain").remove();
+
+  	grafico.selectAll(".domain-2")
+		.data([1 , 2, 3, 4, 5, 6, 7, 8, 9, 10])
+		.enter()
+		.append("line")
+		.attr("x1", -5 )     // x position of the first end of the line
+		.attr("y1", function(d, i){return i*tamanhoy/9.5 +3;})      // y position of the first end of the line
+		.attr("x2", 0 )     // x position of the second end of the line
+		.attr("y2", function(d, i){return i*tamanhoy/9.5 +3;})
+		.attr("class", "domain-2");
 
 
   	grafico.selectAll(".dotLines")
@@ -215,7 +228,7 @@ function VisGeral(){
 	      .attr("class", "textLabels")
 	      .text( function (d) { return "" + d.estado; })
 	      .attr("x", function(d, i) { return stateScale(Number( i )); })
-	      .attr("y", tamanhoy + 20)
+	      .attr("y", tamanhoy + 20);
 
     grafico.selectAll(".lineX")
     	.data([0])

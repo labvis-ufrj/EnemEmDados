@@ -16,7 +16,7 @@
 	stroke: black;
 }
 .dotLinguagens{
-	fill: none;
+	fill: transparent;
 	stroke: #999999;
 	stroke-width: 3px;
 }
@@ -37,7 +37,7 @@
 
 
 .dotNatureza{
-	fill: none;
+	fill: transparent;
 	stroke: grey;
 	stroke-width: 2px;
 }
@@ -47,7 +47,7 @@
 	stroke: black;
 }
 .dotRedacao{
-	fill: none;
+	fill: transparent;
 	stroke: grey;
 	stroke-width: 2px;
 	opacity: .8;
@@ -84,6 +84,7 @@
 	font-family: courier;
 	font-size: 25px;
 	fill: grey;	
+	cursor: pointer;
 }
 .selected{
 	stroke: grey;

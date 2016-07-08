@@ -6,7 +6,7 @@ function VisIdade(sub, dados){
 	grafico = vis.selectAll(".layout")
 			.data([0])
 		   	.enter()
-		    .append("g"a)
+		    .append("g")
 		    .attr("class", "layout")
 			.attr("transform",function(d,i){return "translate(" + posicaoX + "," + posicaoY + ")";});
 

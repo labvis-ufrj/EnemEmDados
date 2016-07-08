@@ -1,0 +1,18 @@
+Pagina inicial
+
+
+vis mapa
+	transição *
+	gradiente ***
+	mudar menu *
+
+vis geral
+	legendas **
+	arrumar mouseover ***
+
+vis idade
+	imagens auxiliares **** feito
+	legendas **
+	retocar menu **
+	adicionar grid **
+

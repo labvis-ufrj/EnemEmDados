@@ -1,25 +1,80 @@
+/*BARRAS PARA IDADE - CSS*/
+
 .dotGrade{
 	fill: blue;
 }
+
+/*barras - contorno*/
 .dotQuant{
 	fill: grey;
 	stroke: white;
 	stroke-width: 1px;
 }
 .x-axis{
-	fill: black;
+	fill: red;
 }
 .y-axis{
-	fill: grey;
+	fill: green;
 }
 .z-axis{
 	fill: blue;
 }
 .lineGrade{
-	stroke-width:2px;
-	stroke: blue;
+	stroke-width:1px;
+	stroke: yellow;
 	fill: transparent;	
 }
 svg{
 	background: white;
+}
+.manu-rect{
+	fill: white;
+	opacity: .5;
+	stroke: gray;
+	stroke-opacity:.5;
+	stroke-width:2px;
+}
+
+
+/*Alterei daqui pra baixo*/
+
+.dotGradeAux{
+	fill: black;
+}
+
+/*barras - contorno*/
+.dotQuantAux{
+	fill: black;
+	stroke: white;
+	stroke-width: .1px;
+}
+.x-axis-Aux{
+	fill: black;
+}
+.y-axis-Aux{
+	fill: black;
+}
+.z-axis-Aux{
+	fill: black;
+}
+.lineGradeAux{
+	stroke-width:1px;
+	stroke: black;
+	fill: transparent;	
+}
+.clickRect{
+	fill: transparent;
+	cursor: pointer;
+}
+.subjects{
+	text-anchor: middle;
+	font-family: courier;
+	font-size: 17px;
+	fill: black;	
+}
+.selected{
+	stroke:black;
+	stroke-width:5px;
+	stroke-opacity:.8;
+	fill: none;
 }

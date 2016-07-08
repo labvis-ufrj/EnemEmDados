@@ -1,3 +1,10 @@
+/*DISPERÇÃO - CSS*/
+
+/*body{
+	background: blue;
+}*/
+
+/*ícones*/
 .dotLines{
 	stroke: grey;
 	stroke-width: 2px;
@@ -57,11 +64,17 @@
 	color: black;
 	stroke: black;
 }
+
+
+
+
+
+/*não sei o que é isso*/
 .x-axis{
-	fill: black;
+	fill: blue;
 }
 .x-axis.domain{
-	width: 30px;
+	width: 100px;
 }
 .y-axis{
 	fill: grey;
@@ -70,30 +83,36 @@
 .z-axis{
 	fill: blue;
 }
+
+
+/*números do y do gráfico*/
 .y-axis text{
 	font-size: 10px;
 }
+
+
+/*abreviaturas dos estados no gráfico*/
 .textLabels{
 	text-anchor: middle;
 	font-family: courier;
-	font-size: 12px;
+	font-size: 20px;
 	fill: grey;
 }
 .options{
 	text-anchor: left;
 	font-family: courier;
-	font-size: 25px;
+	font-size: 17px;
 	fill: grey;	
 	cursor: pointer;
 }
 .selected{
 	stroke: grey;
-	stroke-width: 3px;
+	stroke-width: 1px;
 	fill: none;	
 }
 .lineX{
-	stroke: grey;
-	stroke-width: 2px;
+	stroke: #ddd;
+	stroke-width: 1px;
 }
 .separate{
 	stroke: black;
@@ -103,5 +122,5 @@ svg{
 }
 .domain-2{
 	stroke: grey ;
-	stroke-width: 2px;
+	stroke-width: 1px;
 }

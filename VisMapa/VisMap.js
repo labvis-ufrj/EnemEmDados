@@ -16,7 +16,7 @@ var maxVal = minVal = 0;
 */
 	var colorGrades = d3.scale.linear()
 	    .domain([minVal, maxVal])
-	    .range(["rgb(12,239,255)","rgb(05,00,49)"]);
+	    .range([corMinima,corMaxima]);
 
 
 	var opacityGrades = d3.scale.linear()
@@ -28,7 +28,7 @@ var maxVal = minVal = 0;
 		    .data(dataset)
 		    .enter()
 		    .append("g")
-			.attr("transform",function(d,i){return "translate(150,0)";});
+			.attr("transform",function(d,i){return "translate(" + mapX + "," + mapY + "0)";});
 
 	    map.append("polygon")
 		    .attr("points", function(d){

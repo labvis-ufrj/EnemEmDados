@@ -8,7 +8,7 @@ function VisGeral(){
 		   	.enter()
 		    .append("g")
 		    .attr("class","grafico")
-			.attr("transform",function(d,i){return "translate(550,50)";});
+			.attr("transform",function(d,i){return "translate("+ scatterplotX + "," + scatterplotY + ")";});
 
 	grafico.data(dataset)
 		    .enter();
@@ -16,7 +16,7 @@ function VisGeral(){
 	var xAxis = d3.svg.axis()
 	    .scale(stateScale)
 	    .orient("bottom")
-		.tickFormat(function(d) { return "" + dataset[d].estado; });
+		.tickFormat(function(d) { return "" + dataset[d].Estado; });
 
 	var yAxis = d3.svg.axis()
 	    .scale(gradeScale)
@@ -59,7 +59,7 @@ function VisGeral(){
 		  .attr("width", 10)
 	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
-	      .attr("y", tamanhoy) //function(d) { return gradeScale(Number(d["Linguagens"])); })
+	      .attr("y", tamanhoy)
 	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Linguagens: " + d["Linguagens"]});
@@ -77,7 +77,7 @@ function VisGeral(){
       	  .style("visibility", "visible")
       	.attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
 		.delay(function(d, i){return 100*1;})
-		.duration(800);;
+		.duration(800);
 	    
 	grafico.selectAll(".dotHumanas")
 	      .data(dataset)
@@ -226,7 +226,7 @@ function VisGeral(){
 	      .enter()
 	      .append("text")
 	      .attr("class", "textLabels")
-	      .text( function (d) { return "" + d.estado; })
+	      .text( function (d) { return "" + d.Estado; })
 	      .attr("x", function(d, i) { return stateScale(Number( i )); })
 	      .attr("y", tamanhoy + 20);
 

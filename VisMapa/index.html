@@ -2,6 +2,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript" src="editavel.js"></script>
 		<script type="text/javascript" src="VisMap.js"></script>
 		<link href="../bootstrap.min.css" rel="stylesheet">	
 		<link href="../template.css" rel="stylesheet">
@@ -37,16 +38,13 @@
 		<div id="menus"></div>
 		<div align="center" class="visualizacao"></div>
 		<script type="text/javascript">
-			var raio = 40;
-			var dx = raio * 1.85;
-			var dy = raio * 2.25;
 			
 			var vis = d3.select("div.visualizacao").append("svg")
-		         .attr("width", "90%")
-		         .attr("height",800);
+		         .attr("width", "100%")
+		         .attr("height","90%");
 
 
-
+/*
 			  var tooltip = d3.select("body")
 			      .append("div")
 			      .style("position", "absolute")
@@ -54,8 +52,8 @@
 			      .style("visibility", "hidden")
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
-
-			      var dataset = [];
+*/	
+			var dataset = [];
 			d3.csv("tabelaVisMapa.csv",function(data){
 				dataset = data ;
 				console.log(dataset);

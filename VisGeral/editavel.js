@@ -24,3 +24,12 @@ var espacoEntreMenus = 25;
 //posição dos ícones da legenda
 var figuresX = 180;
 var figuresY = 20;
+
+
+//posicao das escalas
+var positionXAxisX = tamanhox/2;
+var positionXAxisY = tamanhoy*1.1;
+
+//Atencao com esse posicionamento, ele esta rotacionado
+var positionYAxisX = -tamanhoy/2;
+var positionYAxisY = -50;

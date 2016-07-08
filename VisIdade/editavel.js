@@ -42,3 +42,12 @@ posicaoAux =[{x:0 , y:0}, //primera
 			 {x:250 , y:0},
 			 {x:250 , y:180},
 			 {x:250 , y:360}];
+
+
+//posicao das escalas
+var positionXAxisX = tamanhox/2;
+var positionXAxisY = tamanhoy*1.07;
+
+//Atencao com esse posicionamento, ele esta rotacionado
+var positionYAxisX = -tamanhoy/2;
+var positionYAxisY = -70;

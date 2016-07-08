@@ -70,29 +70,31 @@
 
 
 /*não sei o que é isso*/
-.x-axis{
-	fill: blue;
-}
-.x-axis.domain{
-	width: 100px;
-}
+
 .y-axis{
 	fill: grey;
 	stroke-width: 2px
 }
-.z-axis{
-	fill: blue;
-}
-
-
 /*números do y do gráfico*/
 .y-axis text{
 	font-size: 10px;
+}
+.y-axis-text{
+	text-anchor: middle;
+	font-family: courier;
+	font-size: 20px;
+	fill: grey;
 }
 
 
 /*abreviaturas dos estados no gráfico*/
 .textLabels{
+	text-anchor: middle;
+	font-family: courier;
+	font-size: 20px;
+	fill: grey;
+}
+.x-axis-text{
 	text-anchor: middle;
 	font-family: courier;
 	font-size: 20px;

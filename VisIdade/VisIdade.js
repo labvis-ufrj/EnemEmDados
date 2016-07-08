@@ -16,8 +16,17 @@ function VisIdade(sub, dados){
 
 	var xAxis = d3.svg.axis()
 	    .scale(ageScale)
-	    .orient("bottom");
-	
+	    .orient("bottom")
+	    .tickFormat(function(d) { 
+	    	if (Number(d) == 15){
+	    		return "" + d + " -";
+			}
+	    	if (Number(d) == 50){
+	    		return "" + d + " +";
+			}
+			return "" + d;
+		});
+
 	var yAxis = d3.svg.axis()
 	    .scale(quantScale)
 	    .orient("left");
@@ -31,9 +40,34 @@ function VisIdade(sub, dados){
 	      .attr("transform", "translate(0," + tamanhoy + ")")
 	      .call(xAxis);
 
+	grafico.selectAll(".x-axis text")
+		.attr("transform", "translate( " + (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade)))/2 + ",0)");
+
+	grafico.selectAll(".x-axis-text")
+			.data([0])
+			.enter()
+			.append("text")      // text label for the x axis
+	        .attr("class", "x-axis-text")
+	        .attr("x", positionXAxisX )
+	        .attr("y", positionXAxisY )
+	        .style("text-anchor", "left")
+	        .text("Idade");
+
+
 	grafico.append("g")
 	      .attr("class", "y-axis")
 	      .call(yAxis);
+
+	grafico.selectAll(".y-axis-text")
+			.data([0])
+			.enter()
+			.append("text")      // text label for the x axis
+	        .attr("class", "y-axis-text")
+	        .attr("transform", "rotate(-90)")
+	        .attr("x", positionYAxisX )
+	        .attr("y", positionYAxisY )
+	        .style("text-anchor", "middle")
+	        .text("Quantidade");
 
 	grafico.append("g")
 	      .attr("class", "z-axis")

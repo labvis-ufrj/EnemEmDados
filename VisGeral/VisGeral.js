@@ -49,6 +49,27 @@ function VisGeral(){
 		.attr("y2", tamanhoy)
 		.attr("class", "dotLines");
 		
+	grafico.selectAll(".x-axis-text")
+			.data([0])
+			.enter()
+			.append("text")      // text label for the x axis
+	        .attr("class", "x-axis-text")
+	        .attr("x", positionXAxisX )
+	        .attr("y", positionXAxisY )
+	        .style("text-anchor", "left")
+	        .text("Estados");
+
+
+	grafico.selectAll(".y-axis-text")
+			.data([0])
+			.enter()
+			.append("text")      // text label for the x axis
+	        .attr("class", "y-axis-text")
+	        .attr("transform", "rotate(-90)")
+	        .attr("x", positionYAxisX )
+	        .attr("y", positionYAxisY )
+	        .style("text-anchor", "middle")
+	        .text("Médias");
 
 
   	grafico.selectAll(".dotLinguagens")

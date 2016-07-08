@@ -431,7 +431,7 @@ function makeVisAuxiliar(num, sub, dados){
 		.data([1])
 		.enter()
 		.append("text")
-		.text( function (d) { return "" + sub; })
+		.text( function (d) { return "" + upcase[sub]; })
         .attr("x", function(d, i) { return tamanhoAuxX/2; })
         .attr("y", function(d, i){ return 0;})
         .attr("class", "subjects")

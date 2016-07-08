@@ -2,11 +2,11 @@
 //  Exemplo em http://bl.ocks.org/mbostock/3887118
 
 
-function VisIdade(subject, dados){
+function VisIdade(sub, dados){
 	grafico = vis.selectAll(".layout")
 			.data([0])
 		   	.enter()
-		    .append("g")
+		    .append("g"a)
 		    .attr("class", "layout")
 			.attr("transform",function(d,i){return "translate(" + posicaoX + "," + posicaoY + ")";});
 
@@ -58,7 +58,7 @@ function VisIdade(subject, dados){
 
 	var lineFunction = d3.svg.line()
 			.x(function(d){return ageScale(Number(d.idade)) + (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade)))/2; })
-			.y(function(d){return gradeScale(Number(d[subject])); })
+			.y(function(d){return gradeScale(Number(d[sub])); })
 			.interpolate("linear");
 
 	grafico.selectAll(".lineGrade")
@@ -75,7 +75,7 @@ function VisIdade(subject, dados){
 	      .append("circle")
 	      .attr("class", "dotGrade")
 	      .attr("cx", function(d) { return ageScale(Number(d.idade)) + (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade)))/2; })
-	      .attr("cy", function(d) { return gradeScale(Number(d[subject])); })
+	      .attr("cy", function(d) { return gradeScale(Number(d[sub])); })
 	      .attr("r", 3.5);
 /*
 	grafico.selectAll(".dotGrade")

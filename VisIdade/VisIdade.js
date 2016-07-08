@@ -232,83 +232,85 @@ function makeMenu(subjeto){
       .attr("x", function(d, i){return Math.floor(i/5)*separacaoMenuX + shiftMenuX;})
       .attr("y", function(d, i){return (i%5)*separacaoMenuY + shiftMenuY;})
       .on("click", function(d,i){
-      	d3.csv("./estados/" + d + ".csv" ,function(data){
-			dataset = data ;
-			console.log("menu");
-			console.log(dataset);
+      	if(d != estadoAtual){
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
 
-	
-		     sub = maxQuant = 0;
-				maxVal = minVal = Number(dataset[0][subjeto]);
-			for (sub= 0; sub< subjects.length; sub++){
-				for (indice = 0; indice < dataset.length ; indice++){
-					if (Number(dataset[indice][subjects[sub]]) > maxVal){
-						maxVal = Number(dataset[indice][subjects[sub]]);
-					};
-					if (Number(dataset[indice][subjects[sub]]) < minVal){
-						minVal = Number(dataset[indice][subjects[sub]]);
-					};
-					if (Number(dataset[indice].quantidade) > maxQuant){
-						maxQuant = Number(dataset[indice].quantidade);
-					};
-					if (Number(dataset[indice].quantidade) < minQuant){
-						minQuant = Number(dataset[indice].quantidade);
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
 					};
 				};
-			};
-			 primeiraIdade = 0;
-			while (1){
-				console.log(dataset)
-				if (dataset[primeiraIdade].quantidade != "0"){break}
-				primeiraIdade++;
-			};
-			 ultimaIdade = dataset.length - 1;
-			while (1){
-				if (dataset[ultimaIdade].quantidade != "0"){break}
-				ultimaIdade--;
-			};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
 
-			 gradeScale2 = d3.scale.linear()
-			    .domain([minVal*0.975, maxVal*1.025])
-			    .range([tamanhoy, 0]);
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
 
-			 ageScale2 = d3.scale.linear()
-	    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
-			    .range([0,tamanhox]);
-
-
-			console.log(maxQuant)
-			 quantScale2 = d3.scale.linear()
-			    .domain([0, maxQuant*1.05])
-			    .range([tamanhoy, 0]);
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
 
 
-			 ageScale = ageScale2;
-			 gradeScale = gradeScale2;
-			 quantScale = quantScale2;
-
-			var contador = 0;
-			while (1){
-				//contador++;
-				if (subject != subjects[contador]){
-					contador++;
-				}
-				if (subject == subjects[contador]){
-					break;
-				}
-				
-			};
-			console.log(subject + " " + subjects[contador] );
-		console.log(contador);
-    		//VisIdade(""+subject, dataset);
-    		update("" + subject, contador);
-    		for (var indice = 0; indice < subjects.length; indice++){
-    			console.log("indice = "+ indice);
-          		updateAuxiliar(indice, subjects[indice], dataset);
-      		};
-    	});
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
 
 
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+
+      	}
       });
 
 

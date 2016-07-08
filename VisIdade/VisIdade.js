@@ -233,6 +233,7 @@ function makeMenu(subjeto){
       .attr("y", function(d, i){return (i%5)*separacaoMenuY + shiftMenuY;})
       .on("click", function(d,i){
       	if(d != estadoAtual){
+      		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
 				console.log("menu");

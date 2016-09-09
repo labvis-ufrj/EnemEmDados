@@ -3,6 +3,8 @@
 
 
 function VisIdade(sub, dados){
+console.log("entrou");
+
 	grafico = vis.selectAll(".layout")
 			.data([0])
 		   	.enter()
@@ -18,18 +20,19 @@ function VisIdade(sub, dados){
 	    .scale(ageScale)
 	    .orient("bottom")
 	    .tickFormat(function(d) { 
-	    	if (Number(d) == 15){
-	    		return "" + d + " -";
+	    	if (Number(d) == "15"){
+	    		return "- " + d + "";
 			}
-	    	if (Number(d) == 50){
-	    		return "" + d + " +";
+	    	if (Number(d) == "50"){
+	    		return "+ " + d + "";
 			}
 			return "" + d;
 		});
 
 	var yAxis = d3.svg.axis()
 	    .scale(quantScale)
-	    .orient("left");
+	    .orient("left")
+	    .tickFormat(function(d) { return d + " -"; });
 	
 	var zAxis = d3.svg.axis()
 	    .scale(gradeScale)
@@ -39,7 +42,7 @@ function VisIdade(sub, dados){
 	      .attr("class", "x-axis")
 	      .attr("transform", "translate(0," + tamanhoy + ")")
 	      .call(xAxis);
-
+	grafico.selectAll(".x-axis .domain").remove();
 	grafico.selectAll(".x-axis text")
 		.attr("transform", "translate( " + (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade)))/2 + ",0)");
 
@@ -58,22 +61,52 @@ function VisIdade(sub, dados){
 	      .attr("class", "y-axis")
 	      .call(yAxis);
 
+	grafico.selectAll(".y-axis .domain").remove();
+/*
+  	grafico.selectAll(".domain-2")
+		.data([1 , 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+		.enter()
+		.append("line")
+		.attr("x1", -6 )     // x position of the first end of the line
+		.attr("y1", function(d, i){return i*tamanhoy/10.45 +18;})      // y position of the first end of the line
+		.attr("x2", -1 )     // x position of the second end of the line
+		.attr("y2", function(d, i){return i*tamanhoy/10.45 +18;})
+		.attr("class", "domain-2");
+*/
+
 	grafico.selectAll(".y-axis-text")
 			.data([0])
 			.enter()
 			.append("text")      // text label for the x axis
 	        .attr("class", "y-axis-text")
-	        .attr("transform", "rotate(-90)")
+	        //.attr("transform", "rotate(-90)")
 	        .attr("x", positionYAxisX )
 	        .attr("y", positionYAxisY )
-	        .style("text-anchor", "middle")
+	        //.style("text-anchor", "middle")
 	        .text("Quantidade");
+/*
+	grafico.selectAll(".y-axis .tick text")
+			.style("font-weight", function(d, i){if (i == (grafico.selectAll(".y-axis .tick text")[0].length-1)){return "bold";}return "normal";});
+*/
+
 
 	grafico.append("g")
 	      .attr("class", "z-axis")
 	      .attr("transform", "translate(" + tamanhox + ", 0)")
-	      .call(zAxis);
-	      //.style("fill","blue");
+	      .call(zAxis)
+	      .style("fill",cor[sub]);
+
+		grafico.selectAll(".z-axis-text")
+			.data([0])
+			.enter()
+			.append("text")      // text label for the x axis
+	        .attr("class", "z-axis-text")
+	        //.attr("transform", "rotate(-90)")
+	        .attr("x", positionZAxisX )
+	        .attr("y", positionZAxisY )
+	        //.style("text-anchor", "middle")
+	        .text("Médias")
+	        .style("fill", cor[sub]);
   	
   	grafico.selectAll(".dotQuant")
 	      .data(dados)
@@ -87,8 +120,8 @@ function VisIdade(sub, dados){
 	      	return quantScale(Number(d.quantidade)); 
 	      })
 	      .attr("width", function(){ return ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade));})
-	      .attr("height",function(d, i){ return tamanhoy - quantScale(Number(d.quantidade));});
-	      //.style("fill", function(d) { return "brown"; });
+	      .attr("height",function(d, i){ return tamanhoy - quantScale(Number(d.quantidade));})
+	      .style("fill", function(d) { return cor[sub]; });
 
 	var lineFunction = d3.svg.line()
 			.x(function(d){return ageScale(Number(d.idade)) + (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade)))/2; })
@@ -102,6 +135,7 @@ function VisIdade(sub, dados){
 			.attr("class","lineGrade")
             .attr("d", lineFunction(dados))
             .attr("fill", "none");
+            //.style("stroke","black");//cor[sub]);
 
   	grafico.selectAll(".dotGrade")
 	      .data(dados)
@@ -124,6 +158,20 @@ function VisIdade(sub, dados){
 		  .attr("y2",function(d) { return gradeScale(Number(d[subject])); });	      //.attr("cx", function(d) { return ageScale(Number(d.idade)); })
 	      //.attr("cy", function(d) { return gradeScale(Number(d[subject])); });
 */
+  	manu.selectAll(".manu-text")
+  		.style("fill",function(d, i){if (i == 0){return "orange";}return;});
+
+	vis.selectAll(".stateText")
+		.data([0])
+		.enter()
+		.append("text")      // text label for the x axis
+        .attr("class", "stateText")
+        //.attr("transform", "rotate(-90)")
+        .attr("x", stateTextX )
+        .attr("y", stateTextY )
+        //.style("text-anchor", "middle")
+        .text(function(){return "" + nomeDoEstado[estadoAtual];});	
+
 }
 function update(sub, num){
 
@@ -131,12 +179,22 @@ function update(sub, num){
 
 	var xAxis = d3.svg.axis()
 	    .scale(ageScale)
-	    .orient("bottom");
+	    .orient("bottom")
+	    .tickFormat(function(d) { 
+	    	if (Number(d) == "15"){
+	    		return "- " + d + "";
+			}
+	    	if (Number(d) == "50"){
+	    		return "+ " + d + "";
+			}
+			return "" + d;
+		});
 	
 	var yAxis = d3.svg.axis()
 	    .scale(quantScale)
-	    .orient("left");
-	
+	    .orient("left")
+		.tickFormat(function(d) { return d + " -"; });
+
 	var zAxis = d3.svg.axis()
 	    .scale(gradeScale)
 	    .orient("right");
@@ -151,17 +209,41 @@ function update(sub, num){
   		  .transition()
   		  .duration(600)
   		  .call(yAxis);
+	grafico.selectAll(".x-axis .domain").remove();
+	grafico.selectAll(".y-axis .domain").remove();
 
+ /* 	grafico.selectAll(".domain-2")
+  		.style("visibility", "hidden")
+  		.transition()
+  		.delay(600)
+  		.style("visibility", "visible");
+*/
+
+
+
+/*
+	grafico.selectAll(".y-axis .tick text")
+			.transition()
+			.delay(600)
+			.style("font-weight", function(d, i){
+				if (i == (grafico.selectAll(".y-axis .tick text")[0].length-1)){return "bold";}return "normal";})
+			.duration(0);
+*/
   	grafico.select(".z-axis")
   		  .transition()
   		  .duration(600)
   		  .call(zAxis);
 
+	grafico.selectAll(".z-axis")
+		.transition()
+		.style("fill",cor[sub])
+		.duration(600);
+
 	console.log("num =" + num);
   	visAuxiliares.selectAll(".selected")
   		.transition()
   		.attr("x", posicaoAux[num].x - tamanhoAuxX*0.1)
-  		.attr("y", posicaoAux[num].y - tamanhoAuxY*0.2)
+  		.attr("y", posicaoAux[num].y - tamanhoAuxY*0.1)
   		.duration(600);
 
 
@@ -170,6 +252,7 @@ function update(sub, num){
 	      .transition()
 	      .attr("cx", function(d, i) { return ageScale(Number(dataset[i].idade)) + (ageScale(Number(dataset[2].idade)) - ageScale(Number(dataset[1].idade)))/2; })
 	      .attr("cy", function(d, i) { return gradeScale(Number(dataset[i][sub])); })
+	      //.style("fill",cor[sub])
 	      .duration(600);
 
 
@@ -181,6 +264,7 @@ function update(sub, num){
 	grafico.selectAll(".lineGrade")
 			.transition()
             .attr("d", lineFunction(dataset))
+            //.style("stroke",cor[sub])
             .duration(600)
             .attr("fill", "none");        
 
@@ -193,16 +277,24 @@ function update(sub, num){
 	      })
 	      .attr("width", function(){ return ageScale(Number(dataset[2].idade)) - ageScale(Number(dataset[1].idade));})
 	      .attr("height",function(d, i){ return tamanhoy - quantScale(Number(dataset[i].quantidade));})
-	      .duration(600)
-          .attr("fill", "none");
+          .style("fill", function(d) { return cor[sub]; })
+          .duration(600);
 
 
+	vis.selectAll(".stateText")
+		.transition()
+        .text(function(){return "" + nomeDoEstado[estadoAtual];})
+        .duration(600);	
 
+	grafico.selectAll(".z-axis-text")
+		.transition()
+	    .style("fill", cor[sub])
+	    .duration(600);
 
 }
 function makeMenu(subjeto){
 
-	var prod = ["geral",	
+	var prod = [//"Brasil",	
         			"AC",	 
 					"AL",	 
 					"AM",	 
@@ -245,7 +337,7 @@ function makeMenu(subjeto){
 				.enter()
 				.append("g")
 				.attr("class", "manu");
-
+/*
 	manu.selectAll(".manu-rect")
 	  .data([0])
 	  .enter()
@@ -256,15 +348,17 @@ function makeMenu(subjeto){
       .attr("y", function(d) { return 0; })
       .attr("width", function(){ return tamanhoMenuX;})
       .attr("height",function(d, i){ return tamanhoMenuY;});
-
-	manu.selectAll(".manu-text")
-	  .data(prod)
+*/
+	 var vetor = ["Brasil"]
+	manu.selectAll(".manu-text .bra")
+	  .data(vetor)
 	  .enter()
       .append("text")
       .attr("class", "manu-text")
+      .classed("bra", true)
+      .attr("x",posicaoMenuBrasilX)
+      .attr("y", posicaoMenuBrasilY)
       .text( function (d) { return "" + d; })
-      .attr("x", function(d, i){return Math.floor(i/5)*separacaoMenuX + shiftMenuX;})
-      .attr("y", function(d, i){return (i%5)*separacaoMenuY + shiftMenuY;})
       .on("click", function(d,i){
       	if(d != estadoAtual){
       		estadoAtual = d;
@@ -346,17 +440,122 @@ function makeMenu(subjeto){
     		});
 
       	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
+      });
+
+	manu.selectAll(".manu-text .others")
+	  .data(prod)
+	  .enter()
+      .append("text")
+      .attr("class", "manu-text")
+      .classed("others", true)
+      .text( function (d) { return "" + d; })
+      .attr("x", function(d, i){return Math.floor(i/quantidadePorColuna)*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i%quantidadePorColuna)*separacaoMenuY + shiftMenuY;})
+      .on("click", function(d,i){
+      	if(d != estadoAtual){
+      		estadoAtual = d;
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
+
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
+					};
+				};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
+
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
+
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
+
+
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
+
+
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+
+      	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
       });
 
 
 
 	manu.attr("transform", "translate(" + menuX + "," + menuY + ")");
-
+/*
       manuImage.on("click", function(){
       	manu.remove();
       	manuImage.on("click", function(){ makeMenu()});
       });
+*/
 
+	
+	
 };
 
 function makeVisAuxiliar(num, sub, dados){
@@ -436,8 +635,8 @@ function makeVisAuxiliar(num, sub, dados){
 	      	return quantScale2(Number(d.quantidade)); 
 	      })
 	      .attr("width", function(){ return ageScale2(Number(dados[2].idade)) - ageScale2(Number(dados[1].idade));})
-	      .attr("height",function(d, i){ return tamanhoy*taxaY - quantScale2(Number(d.quantidade));});
-	      //.style("fill", function(d) { return "brown"; });
+	      .attr("height",function(d, i){ return tamanhoy*taxaY - quantScale2(Number(d.quantidade));})
+	      .style("fill", function(d) { return cor[sub]; });
 
 	var lineFunction = d3.svg.line()
 			.x(function(d){return ageScale2(Number(d.idade)) + (ageScale2(Number(dados[2].idade)) - ageScale2(Number(dados[1].idade)))/2; })
@@ -466,8 +665,8 @@ function makeVisAuxiliar(num, sub, dados){
 		.enter()
 		.append("text")
 		.text( function (d) { return "" + upcase[sub]; })
-        .attr("x", function(d, i) { return tamanhoAuxX/2; })
-        .attr("y", function(d, i){ return 0;})
+        .attr("x", function(d, i) { return posicaoTextoAuxiliarX; })
+        .attr("y", function(d, i){ return posicaoTextoAuxiliarY;})
         .attr("class", "subjects")
         .on("click", function(){
         	update(""+sub, num)

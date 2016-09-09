@@ -1,35 +1,43 @@
 body { /**/
-background: #AAAAAA;
-  padding-top: 20px;
-  padding-bottom: 20px;
+background: #fff;
+/*distância até os ícones*/
+  padding-top: 10px; 
+  padding-bottom: 10px;
 }
 
 
 .container{
+/*alinhamento horizontal do menu principal, com ponto de orientação no meio. 50% todos os icones com espaçamento igual centralizados no meio*/
   width: 92%; 
+/*distancia de cada lado do grupo de itens em particular*/
   padding-right: 0px;
   padding-left: 0px; 
-  border-bottom:1px solid white;
+
 }
+.navbar {
+  border: 2px!important;
+  border-color: grey;
+ }
 .header {
   padding-right: 0px;
   padding-left: 0px;
-  padding-bottom: 10px;
-  color: white;
-}
-.pull-left{
+  padding-bottom: 0px;
+  padding-top: 20;
+  color: blue;
+  border-bottom: 2px solid #888;
+}.pull-left{
     padding-left: 0px;
     background-color:grey;
     background: none;
     color:#ffffff;
-    border-radius:0;
+    /*border-radius:0;*/
 }
 .pull-right{
-    padding-top: 10px;
+    padding-top: 0px;
     background-color:grey;
     background: none;
     color:#ffffff;
-    border-radius:0;
+    /*border-radius:0;*/
 }
 .pull-left > li > a {
     color:#fff;
@@ -39,9 +47,12 @@ background: #AAAAAA;
     background-color:transparent;
 }
 .pull-left {
-    color:#eeeeee;
+    color:transparent;
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
   color: #fff;
   background-color: black; 
+}
+.nav > li > a:hover{
+    background-color:#fff;
 }

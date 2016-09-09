@@ -1,3 +1,36 @@
 svg{
 	background: white;
 }
+.text-left{
+	text-anchor: right;
+}
+.options{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 15px;
+	fill: grey;	
+	cursor: pointer;
+}
+.selected{
+	stroke: grey;
+	stroke-width: 1px;
+	fill: none;	
+}
+.nameText{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 30px;
+	fill: black;
+}
+.cartogramaText{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 17px;
+	fill: grey;
+}
+.textinho{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 17px;
+	fill: black;
+}

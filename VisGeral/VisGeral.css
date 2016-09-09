@@ -6,63 +6,76 @@
 
 /*ícones*/
 .dotLines{
-	stroke: grey;
+	stroke: #444;
 	stroke-width: 2px;
 	opacity: .3;
+
+
+
 }
 .dotMatematica{
-	fill: #999999;
+	fill: #ffb0b4;
 	stroke: none;
 	stroke-width: 0px
 	fill: grey;
 }
-
 .dotMatematica.active{
-	color: black;
-	fill: black;
-	stroke: black;
+	/*color: #ff7b81;*/
+	fill: #ab4e52;
+	stroke: none;
 }
+
+
+
 .dotLinguagens{
 	fill: transparent;
-	stroke: #999999;
+	stroke: #c5c9da;
 	stroke-width: 3px;
 }
-
 .dotLinguagens.active{
-	stroke: black;
+	stroke: #666e8d;
+
+
+
+
 }
 .dotHumanas{
-	fill: #999999;
-	stroke: none;
+	fill: #f0efad;
+	stroke: #f0efad;
 	stroke-width: 2px;
 }
 .dotHumanas.active{
-	color: black;
-	fill: black;
-	stroke: black;
+	color: #007b60;
+	fill: #74724e;
+	stroke: none;
 }
+
+
 
 
 .dotNatureza{
 	fill: transparent;
-	stroke: grey;
+	stroke: #c0e0c4;
 	stroke-width: 2px;
 }
-
 .dotNatureza.active{
-	color: black;
-	stroke: black;
+	color: #453776;
+	stroke: #577b5a;
+
+
+
+
 }
 .dotRedacao{
-	fill: transparent;
-	stroke: grey;
+	fill: none;
+	stroke: #d8bdd7;
 	stroke-width: 2px;
-	opacity: .8;
+	opacity: 1;
 }
-
 .dotRedacao.active{
-	color: black;
-	stroke: black;
+	color: #ffd800;
+	fill: none;
+	stroke: #92538f;
 }
 
 
@@ -81,29 +94,29 @@
 }
 .y-axis-text{
 	text-anchor: middle;
-	font-family: courier;
-	font-size: 20px;
-	fill: grey;
+	font-family: typewriter;
+	font-size: 15px;
+	fill: #aaa;
 }
 
 
 /*abreviaturas dos estados no gráfico*/
 .textLabels{
 	text-anchor: middle;
-	font-family: courier;
-	font-size: 20px;
-	fill: grey;
+	font-family: typewriter;
+	font-size: 15px;
+	fill: black;
 }
 .x-axis-text{
 	text-anchor: middle;
-	font-family: courier;
-	font-size: 20px;
-	fill: grey;
+	font-family: typewriter;
+	font-size: 15px;
+	fill: #aaa;
 }
 .options{
 	text-anchor: left;
-	font-family: courier;
-	font-size: 17px;
+	font-family: typewriter;
+	font-size: 15px;
 	fill: grey;	
 	cursor: pointer;
 }
@@ -125,4 +138,10 @@ svg{
 .domain-2{
 	stroke: grey ;
 	stroke-width: 1px;
+}
+.textinho{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 17px;
+	fill: black;
 }

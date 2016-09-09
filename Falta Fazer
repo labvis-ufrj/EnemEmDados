@@ -3,8 +3,8 @@ Pagina inicial
 
 vis mapa
 	transição *
-	gradiente ***
-	mudar menu *
+	gradiente ***				feito
+	mudar menu *				
 
 vis geral
 	legendas ** 				feito
@@ -14,5 +14,6 @@ vis idade
 	imagens auxiliares **** 	feito
 	legendas ** 				feito
 	retocar menu **				
-	adicionar grid **			
-
+	adicionar grid **
+	Nome completo do estado acima
+	do gráfico

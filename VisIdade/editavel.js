@@ -9,8 +9,9 @@ var posicaoY = 150;
 
 
 //menu
-var menuX =50;
-var menuY =120;
+//var menuX = window.innerWidth*.045 ;
+var menuX = 0;
+var menuY = 90;
 
 //var tamanhoMenuX =600;
 //var tamanhoMenuY =250;
@@ -18,12 +19,12 @@ var menuY =120;
 var separacaoMenuX =50;
 var separacaoMenuY =30;
 
-var shiftMenuX = 30;
+var shiftMenuX = window.innerWidth*.045;
 var shiftMenuY = 30;
 
 var quantidadePorColuna = 6;
 
-var posicaoMenuBrasilX = 38//menuX;
+var posicaoMenuBrasilX = window.innerWidth*.045//menuX;
 var posicaoMenuBrasilY = 0//menuY - 30;
 
 
@@ -85,5 +86,5 @@ var cor = {geral:"#c9b1b2",
             natureza:"#95cb9a",
             redacao:"#92538f"};
 
-var textinhoX = menuX + 20; //mude na variável menuX para ficar alinhado
+var textinhoX = window.innerWidth*.045; //mude na variável menuX para ficar alinhado
 var textinhoY = 50;

@@ -45,7 +45,7 @@ svg{
 	stroke-width:2px;
 }
 .manu-text{
-	text-anchor: middle;
+	text-anchor: left;
 	font-family: typewriter;
 	font-size: 15px;
 	fill: black;

@@ -57,7 +57,7 @@ var maxVal = minVal = 0;
 
         gradiente.append("rect")
         	.attr("class","retangulo2")
-        	.attr("x", gradientWidth/2)
+        	.attr("x", gradientWidth/2 -1)
             .attr("width", gradientWidth/2)
             .attr("height", gradientHeight)
             .style("fill", "url(#gradient2)");            
@@ -159,8 +159,9 @@ var maxVal = minVal = 0;
 
 		map.append("text")
 			.attr("class", "nome")
-			.attr("x",function(d){return Number(d.x)*dx -15 ;})
-			.attr("y",function(d){return Number(d.y)*dy - 12;})
+			.style("text-anchor","middle")
+			.attr("x",function(d){return Number(d.x)*dx + 0 ;})
+			.attr("y",function(d){return Number(d.y)*dy + 6;})
 			.style("fill", function(d){
               	if (Number(d[subject])>((maxVal+minVal)/2)){return "white";}
               	return "black";})
@@ -193,7 +194,7 @@ var maxVal = minVal = 0;
 		tx = map.append("text")
 			.attr("class", "nota")
 			.attr("x",function(d){return Number(d.x)*dx;})
-			.attr("y",function(d){return Number(d.y)*dy + 05;})
+			.attr("y",function(d){return Number(d.y)*dy + 026;})
 			.style("fill", function(d){
               	if (Number(d[subject])>((maxVal+minVal)/2)){return "white";}
               	return "black";})

@@ -26,6 +26,7 @@
 }
 .z-axis-text{
 	text-anchor:middle;
+	fill:black;
 }
 .lineGrade{
 	stroke-width:2px;
@@ -46,7 +47,7 @@ svg{
 .manu-text{
 	text-anchor: middle;
 	font-family: typewriter;
-	font-size: 17px;
+	font-size: 15px;
 	fill: black;
 	cursor: pointer;	
 }

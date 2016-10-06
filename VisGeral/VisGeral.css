@@ -9,9 +9,6 @@
 	stroke: #444;
 	stroke-width: 2px;
 	opacity: .3;
-
-
-
 }
 .dotMatematica{
 	fill: #ffb0b4;
@@ -144,4 +141,10 @@ svg{
 	font-family: typewriter;
 	font-size: 17px;
 	fill: black;
+}
+.grades{
+	text-anchor: left;
+	font-family: typewriter;
+	font-size: 15px;
+	fill: grey;
 }

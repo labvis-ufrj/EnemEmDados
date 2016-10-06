@@ -24,9 +24,9 @@
 					<div class="logos">
 						<nav>
 					        <ul class="nav nav-pills pull-right">
-						        <li role="presentation"><a href="#"><img src="../imgs/labvis.png" alt="Lab Vis"  height="50" border="0"></a></li>
-						        <li role="presentation"><a href="#"><img src="../imgs/eba.png" alt="Eba" height="50" border="0"></a></li>
-						        <li role="presentation"><a href="#"><img src="../imgs/logo_ufrj.png" alt="UFRJ" height="50" border="0"></a></li>
+						        <li role="presentation"><a href="https://labvis.eba.ufrj.br/"><img src="../imgs/labvis.png" alt="Lab Vis"  height="50" border="0"></a></li>
+						        <li role="presentation"><a href="https://ufrj.br/"><img src="../imgs/eba.png" alt="Eba" height="50" border="0"></a></li>
+						        <li role="presentation"><a href="http://www.eba.ufrj.br/"><img src="../imgs/logo_ufrj.png" alt="UFRJ" height="50" border="0"></a></li>
 					        </ul>
 				        </nav> 
 				    </div>
@@ -102,6 +102,20 @@
 		     var ageScale;
 		     var gradeScale;
 		     var quantScale;
+
+		    //imagem = 
+		    vis.selectAll(".imagem")
+		    	.data([0])
+		    	.enter()
+		    	.append("svg:image")
+		    	.attr("class","imagem")
+				.attr('x',window.innerWidth*.045)
+				.attr('y',450)
+				.attr('width',365* .6)
+				.attr('height', 289*.6)
+				.attr("xlink:href","./explicacao_idade.png");
+
+
 			//d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 			d3.csv("./estados/Brasil.csv",function(data){	
 				dataset = data ;

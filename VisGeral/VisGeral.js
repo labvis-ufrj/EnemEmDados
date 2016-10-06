@@ -81,7 +81,7 @@ function VisGeral(){
 	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
 	      .attr("y", tamanhoy)
-	      .on("mouseover", function(d, i){
+/*	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Linguagens: " + d["Linguagens"]});
 	      })
@@ -93,7 +93,7 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  })
-      	.style("visibility", "hidden")
+*/      	.style("visibility", "hidden")
       	  .transition()
       	  .style("visibility", "visible")
       	.attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
@@ -108,7 +108,7 @@ function VisGeral(){
 	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
 	      .attr("cy", tamanhoy) //function(d) { return gradeScale(Number(d["Humanas"])); })
-	      .on("mouseover", function(d, i){
+/*	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Humanas: " + d["Humanas"]});
 	      })
@@ -120,7 +120,7 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  })
-  		  .style("visibility", "hidden")
+*/  		  .style("visibility", "hidden")
       	  .transition()
       	  .style("visibility", "visible")
   		  .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
@@ -135,7 +135,7 @@ function VisGeral(){
 	      .attr("r", 5)
 	      .attr("cx", function(d, i) { return stateScale(Number( i )); })
 	      .attr("cy", tamanhoy) //function(d) { return gradeScale(Number(d["Natureza"])); })
-	      .on("mouseover", function(d, i){
+/*	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Natureza: " + d["Natureza"]});
 	      })
@@ -147,7 +147,7 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  })
-      	  .style("visibility", "hidden")
+*/      	  .style("visibility", "hidden")
       	  .transition()
       	  .style("visibility", "visible")
       	  .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
@@ -163,7 +163,7 @@ function VisGeral(){
 	      .attr("height", 10)
 	      .attr("x", function(d, i) { return stateScale(Number( i )) - 5; })
 	      .attr("y", tamanhoy) //function(d) { return gradeScale(Number(d["Matematica"])); })
-	      .on("mouseover", function(d, i){
+/*	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Matematica: " + d["Matematica"]});
 	      })
@@ -175,7 +175,7 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  })
-      	  .style("visibility", "hidden")
+*/      	  .style("visibility", "hidden")
       	  .transition()
       	  .style("visibility", "visible")
   	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
@@ -205,7 +205,7 @@ function VisGeral(){
 				    points += point[i];
 				}
 		    	return points})//return stateScale(Number( i )) + ',' + tamanhoy;})
-	      .on("mouseover", function(d, i){
+/*	      .on("mouseover", function(d, i){
 	      	return tooltip.style("visibility", "visible")
 	      					.text(function(e){ return "Redacao: " + d["Redacao"]});
 	      })
@@ -217,7 +217,7 @@ function VisGeral(){
         	return tooltip.style("top",  (event.pageY-10)+"px")
     			            .style("left", (event.pageX+10)+"px");
       	  })
-      	  .style("visibility", "hidden")
+*/      	  .style("visibility", "hidden")
       	  .transition()
       	  .style("visibility", "visible")
 	      .attr("points", function(d, i){
@@ -260,6 +260,44 @@ function VisGeral(){
 		.attr("x2", tamanhox)     // x position of the second end of the line
 		.attr("y2", tamanhoy)
 		.attr("class", "lineX");
+
+
+
+			var disciplinas = ["Estado",
+						"Linguagens",
+	                    "Humanas", 
+	                    "Natureza",
+	                    "Redacao",
+	                    "Matematica"];
+
+  	grafico.selectAll(".retangulos")
+		.data(dataset)
+		.enter()
+		.append("rect")
+		.attr("class", "retangulos")
+		.attr("width", function(d, i) { return 1*stateScale(Number( 1 )) - stateScale(Number( 0 )); })
+		.attr("height", tamanhoy)
+		.attr("x", function(d, i) { return stateScale(Number( i - 0.5 )); })
+	    .attr("y", 0)
+	    .style("fill", "transparent")
+		.on("mouseover", function(d, i){
+	      	return menu.selectAll(".grades")
+	      				.transition()
+	      				.text(function(e,f){return d[disciplinas[f]];})
+	      				.style("visibility", "visible")
+	      				.duration(0);
+	      		      })
+		.on("mouseout", function(d, i){
+	      	return menu.selectAll(".grades")
+	      				.transition()
+	      				//.text(function(d,i){return d.prod[i];})
+	      				.style("visibility", "hidden")
+	      				.duration(600);
+	      });
+
+
+
+
 }
 
 
@@ -323,6 +361,15 @@ console.log(sub)
 	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
 	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
+
+	grafico.selectAll(".retangulos")
+		  .transition()
+	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) - 0.5 )); })
+	      //.attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
+	      .delay(function(d, i){return 120*i;})
+	      .duration(1000);
+
+
 
 	grafico.selectAll(".dotRedacao")
 		  .transition()

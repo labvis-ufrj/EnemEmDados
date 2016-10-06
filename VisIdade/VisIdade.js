@@ -83,7 +83,8 @@ console.log("entrou");
 	        .attr("x", positionYAxisX )
 	        .attr("y", positionYAxisY )
 	        //.style("text-anchor", "middle")
-	        .text("Quantidade");
+	        .text("Quantidade")
+	        .style("fill",cor[sub]);
 /*
 	grafico.selectAll(".y-axis .tick text")
 			.style("font-weight", function(d, i){if (i == (grafico.selectAll(".y-axis .tick text")[0].length-1)){return "bold";}return "normal";});
@@ -93,8 +94,8 @@ console.log("entrou");
 	grafico.append("g")
 	      .attr("class", "z-axis")
 	      .attr("transform", "translate(" + tamanhox + ", 0)")
-	      .call(zAxis)
-	      .style("fill",cor[sub]);
+	      .call(zAxis);
+	      //.style("fill",cor[sub]);
 
 		grafico.selectAll(".z-axis-text")
 			.data([0])
@@ -234,7 +235,7 @@ function update(sub, num){
   		  .duration(600)
   		  .call(zAxis);
 
-	grafico.selectAll(".z-axis")
+	grafico.selectAll(".y-axis")
 		.transition()
 		.style("fill",cor[sub])
 		.duration(600);
@@ -322,6 +323,39 @@ function makeMenu(subjeto){
 					"SE",	 
 					"SP",	 
 					"TO"];
+
+	var norte = ["AM",
+				 "AP",
+				 "AC",
+				 "PA",
+				 "TO",
+				 "RR",
+				 "RO"];
+				 norte.sort();
+	var nordeste = ["MA",
+					"CE",
+					"PI",
+					"PE",
+					"SE",
+					"PB",
+					"AL",
+					"RS",
+					"BA"];
+					nordeste.sort();
+	var centro = ["MT",
+				  "MS",
+				  "GO",
+				  "DF"];
+				  centro.sort();
+	var sudeste = ["RJ",
+				   "ES",
+				   "SP",
+				   "MG"];
+				   sudeste.sort();
+	var sul = ["PR",
+			   "SC",
+			   "RS"];
+			   sul.sort();
 
 
 		var subjects = ["geral",
@@ -447,15 +481,15 @@ function makeMenu(subjeto){
 
       });
 
-	manu.selectAll(".manu-text .others")
-	  .data(prod)
+	manu.selectAll(".manu-text .norte")
+	  .data(norte)
 	  .enter()
       .append("text")
       .attr("class", "manu-text")
-      .classed("others", true)
+      .classed("norte", true)
       .text( function (d) { return "" + d; })
-      .attr("x", function(d, i){return Math.floor(i/quantidadePorColuna)*separacaoMenuX + shiftMenuX;})
-      .attr("y", function(d, i){return (i%quantidadePorColuna)*separacaoMenuY + shiftMenuY;})
+      .attr("x", function(d, i){return 0*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i)*separacaoMenuY + shiftMenuY;})
       .on("click", function(d,i){
       	if(d != estadoAtual){
       		estadoAtual = d;
@@ -535,7 +569,6 @@ function makeMenu(subjeto){
 	      		};
     	
     		});
-
       	}
       	manu.selectAll(".manu-text")
       		.style("fill",function(){return});
@@ -544,8 +577,389 @@ function makeMenu(subjeto){
 
       });
 
+	manu.selectAll(".manu-text .nordeste")
+	  .data(nordeste)
+	  .enter()
+      .append("text")
+      .attr("class", "manu-text")
+      .classed("nordeste", true)
+      .text( function (d) { return "" + d; })
+      .attr("x", function(d, i){return 1*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i)*separacaoMenuY + shiftMenuY;})
+      .on("click", function(d,i){
+      	if(d != estadoAtual){
+      		estadoAtual = d;
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
+
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
+					};
+				};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
+
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
+
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
 
 
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
+
+
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+      	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
+      });
+
+	manu.selectAll(".manu-text .centro")
+	  .data(centro)
+	  .enter()
+      .append("text")
+      .attr("class", "manu-text")
+      .classed("centro", true)
+      .text( function (d) { return "" + d; })
+      .attr("x", function(d, i){return 2*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i)*separacaoMenuY + shiftMenuY;})
+      .on("click", function(d,i){
+      	if(d != estadoAtual){
+      		estadoAtual = d;
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
+
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
+					};
+				};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
+
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
+
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
+
+
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
+
+
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+      	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
+      });
+
+	manu.selectAll(".manu-text .sudeste")
+	  .data(sudeste)
+	  .enter()
+      .append("text")
+      .attr("class", "manu-text")
+      .classed("sudeste", true)
+      .text( function (d) { return "" + d; })
+      .attr("x", function(d, i){return 3*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i)*separacaoMenuY + shiftMenuY;})
+      .on("click", function(d,i){
+      	if(d != estadoAtual){
+      		estadoAtual = d;
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
+
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
+					};
+				};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
+
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
+
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
+
+
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
+
+
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+      	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
+      });
+
+	manu.selectAll(".manu-text .sul")
+	  .data(sul)
+	  .enter()
+      .append("text")
+      .attr("class", "manu-text")
+      .classed("sul", true)
+      .text( function (d) { return "" + d; })
+      .attr("x", function(d, i){return 4*separacaoMenuX + shiftMenuX;})
+      .attr("y", function(d, i){return (i)*separacaoMenuY + shiftMenuY;})
+      .on("click", function(d,i){
+      	if(d != estadoAtual){
+      		estadoAtual = d;
+	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+				dataset = data ;
+				console.log("menu");
+				console.log(dataset);
+
+		
+			     sub = maxQuant = 0;
+					maxVal = minVal = Number(dataset[0][subjeto]);
+				for (sub= 0; sub< subjects.length; sub++){
+					for (indice = 0; indice < dataset.length ; indice++){
+						if (Number(dataset[indice][subjects[sub]]) > maxVal){
+							maxVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice][subjects[sub]]) < minVal){
+							minVal = Number(dataset[indice][subjects[sub]]);
+						};
+						if (Number(dataset[indice].quantidade) > maxQuant){
+							maxQuant = Number(dataset[indice].quantidade);
+						};
+						if (Number(dataset[indice].quantidade) < minQuant){
+							minQuant = Number(dataset[indice].quantidade);
+						};
+					};
+				};
+				 primeiraIdade = 0;
+				while (1){
+					console.log(dataset)
+					if (dataset[primeiraIdade].quantidade != "0"){break}
+					primeiraIdade++;
+				};
+				 ultimaIdade = dataset.length - 1;
+				while (1){
+					if (dataset[ultimaIdade].quantidade != "0"){break}
+					ultimaIdade--;
+				};
+
+				 gradeScale2 = d3.scale.linear()
+				    .domain([minVal*0.975, maxVal*1.025])
+				    .range([tamanhoy, 0]);
+
+				 ageScale2 = d3.scale.linear()
+		    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+				    .range([0,tamanhox]);
+
+
+				console.log(maxQuant)
+				 quantScale2 = d3.scale.linear()
+				    .domain([0, maxQuant*1.05])
+				    .range([tamanhoy, 0]);
+
+
+				 ageScale = ageScale2;
+				 gradeScale = gradeScale2;
+				 quantScale = quantScale2;
+
+				var contador = 0;
+				while (1){
+					//contador++;
+					if (subject != subjects[contador]){
+						contador++;
+					}
+					if (subject == subjects[contador]){
+						break;
+					}
+					
+				};
+				console.log(subject + " " + subjects[contador] );
+				console.log(contador);
+	    		//VisIdade(""+subject, dataset);
+	    		update("" + subject, contador);
+	    		for (var indice = 0; indice < subjects.length; indice++){
+	    			console.log("indice = "+ indice);
+	          		updateAuxiliar(indice, subjects[indice], dataset);
+	      		};
+    	
+    		});
+      	}
+      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
+
+      });
 	manu.attr("transform", "translate(" + menuX + "," + menuY + ")");
 /*
       manuImage.on("click", function(){

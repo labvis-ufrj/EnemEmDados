@@ -85,5 +85,5 @@ var cor = {geral:"#c9b1b2",
             natureza:"#95cb9a",
             redacao:"#92538f"};
 
-var textinhoX = menuX + 40; //mude na variável menuX para ficar alinhado
+var textinhoX = menuX + 20; //mude na variável menuX para ficar alinhado
 var textinhoY = 50;

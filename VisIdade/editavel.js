@@ -1,10 +1,15 @@
 //BARRAS PARA IDADE - JS
 //tamanhos do scatterplot
-var tamanhox = 1000;
-var tamanhoy = 450;
 
-var posicaoX = 380;
-var posicaoY = 150;
+
+var fatorEscalaX = window.innerWidth/1536;
+var fatorEscalaY = window.innerHeight / 755;
+
+var tamanhox = fatorEscalaX * 1000;
+var tamanhoy = fatorEscalaY * 450;
+
+var posicaoX = fatorEscalaX * 390;//fatorEscalaX * 380;
+var posicaoY = fatorEscalaY * 150;
 
 
 
@@ -16,7 +21,7 @@ var menuY = 90;
 //var tamanhoMenuX =600;
 //var tamanhoMenuY =250;
 
-var separacaoMenuX =50;
+var separacaoMenuX = fatorEscalaX * 50;
 var separacaoMenuY =30;
 
 var shiftMenuX = window.innerWidth*.045;
@@ -45,12 +50,12 @@ var posicaoTextoAuxiliarX = 0 ;
 var posicaoAux = [];
 
 var tp = //
-posicaoAux =[{x:315 , y:-80}, //geral
-			 {x:1039 , y:-80}, //linguagens
-			 {x:677 , y:-80},//humanas
-			 {x:496 , y:-80},//Natureza
-			 {x:1220 , y:-80},//redação
-			 {x:858 , y:-80}];//matemática
+posicaoAux =[{x: fatorEscalaX * 315 , y:-80}, //geral
+			 {x: fatorEscalaX * 1039 , y:-80}, //linguagens
+			 {x:fatorEscalaX *677 , y:-80},//humanas
+			 {x:fatorEscalaX *496 , y:-80},//Natureza
+			 {x:fatorEscalaX *1220 , y:-80},//redação
+			 {x:fatorEscalaX *858 , y:-80}];//matemática
 
 /*
 ordem final: 	geral
@@ -75,7 +80,7 @@ var positionZAxisX = tamanhox;
 var positionZAxisY = -5;
 
 //posicao do nome da visualizacao
-var stateTextX = 875;
+var stateTextX = fatorEscalaX *875;
 var stateTextY = 168;
 
 //cores dos graficos auxiliares

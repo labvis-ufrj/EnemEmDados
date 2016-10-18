@@ -1,4 +1,4 @@
-
+var fatorEscalaX = window.innerWidth/1536;
 
 //raio circulo circunscrito ao hexagono
 var raio = 35;
@@ -35,7 +35,7 @@ var corMaxima = {Matematica:"#3c1414",
 
 //posicao do mapa
 
-var mapX = 300;
+var mapX = fatorEscalaX * 450;
 var mapY = 03;
 
 var gradientX = 60 + mapX;
@@ -62,16 +62,16 @@ var menuY = 40;
 
 
 //retângulo de seleção
-var menuBoxWidth = 200;
+var menuBoxWidth = 135;
 var menuBoxHeigth = 20;
-var menuBoxX = 50;
+var menuBoxX = 15;
 var menuBoxY = 15;
 
 var espacoEntreMenus = 25;
 
 
 //posicao do nome da visualizacao
-var nameTextX = 320;
+var nameTextX = fatorEscalaX * 450;
 var nameTextY = 350;
 
 //posicao do nome da visualizacao

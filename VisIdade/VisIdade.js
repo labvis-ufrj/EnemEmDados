@@ -107,7 +107,7 @@ console.log("entrou");
 	        .attr("y", positionZAxisY )
 	        //.style("text-anchor", "middle")
 	        .text("Médias")
-	        .style("fill", cor[sub]);
+	        //.style("fill", cor[sub]);
   	
   	grafico.selectAll(".dotQuant")
 	      .data(dados)
@@ -213,6 +213,11 @@ function update(sub, num){
 	grafico.selectAll(".x-axis .domain").remove();
 	grafico.selectAll(".y-axis .domain").remove();
 
+	grafico.selectAll(".y-axis-text")
+		.transition()
+  		.style("fill",cor[sub])
+  		.duration(600)
+
  /* 	grafico.selectAll(".domain-2")
   		.style("visibility", "hidden")
   		.transition()
@@ -286,12 +291,12 @@ function update(sub, num){
 		.transition()
         .text(function(){return "" + nomeDoEstado[estadoAtual];})
         .duration(600);	
-
+/*
 	grafico.selectAll(".z-axis-text")
 		.transition()
 	    .style("fill", cor[sub])
 	    .duration(600);
-
+*/
 }
 function makeMenu(subjeto){
 
@@ -339,7 +344,7 @@ function makeMenu(subjeto){
 					"SE",
 					"PB",
 					"AL",
-					"RS",
+					"RN",
 					"BA"];
 					nordeste.sort();
 	var centro = ["MT",

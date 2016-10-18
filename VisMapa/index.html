@@ -1,7 +1,7 @@
 <body>
 	<head>
 		<meta charset="UTF-8">
-		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="../d3.v3.min.js"></script>
 		<script type="text/javascript" src="editavel.js"></script>
 		<script type="text/javascript" src="VisMap.js"></script>
 		<link href="../bootstrap.min.css" rel="stylesheet">	
@@ -155,6 +155,7 @@
 			.attr("class", "selected")
 			.attr("width", menuBoxWidth)
 			.attr("height", menuBoxHeigth)
+			.attr("x", function(){ return menuBoxX;})
 			.attr("y", function(){ return menuBoxY;});
 
 		menu.selectAll(".options")

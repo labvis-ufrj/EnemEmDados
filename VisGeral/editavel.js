@@ -2,7 +2,7 @@
 // window.innerWidth ===>> tamanho horizontal
 // window.innerHeight ===>>> tamanho vertical
 //tamanho do gráfico
-var tamanhox = window.innerWidth*2/3;
+var tamanhox = window.innerWidth*2/3*1.05;
 var tamanhoy = window.innerHeight*2/3;
 
 //posição do gráfico

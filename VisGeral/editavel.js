@@ -2,12 +2,17 @@
 // window.innerWidth ===>> tamanho horizontal
 // window.innerHeight ===>>> tamanho vertical
 //tamanho do gráfico
-var tamanhox = window.innerWidth*2/3*1.05;
-var tamanhoy = window.innerHeight*2/3;
+
+
+var fatorEscalaX = window.innerWidth/1536;
+var fatorEscalaY = window.innerHeight / 755;
+
+var tamanhox = fatorEscalaX*1075.2;
+var tamanhoy = fatorEscalaY*503.3;
 
 //posição do gráfico
-var scatterplotX = 400;
-var scatterplotY = 60;
+var scatterplotX = fatorEscalaX * 400;
+var scatterplotY = fatorEscalaY * 60;
 
 
 

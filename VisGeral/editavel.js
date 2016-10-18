@@ -7,7 +7,7 @@
 var fatorEscalaX = window.innerWidth/1536;
 var fatorEscalaY = window.innerHeight / 755;
 
-var tamanhox = fatorEscalaX*1075.2;
+var tamanhox = fatorEscalaX*1040;
 var tamanhoy = fatorEscalaY*503.3;
 
 //posição do gráfico

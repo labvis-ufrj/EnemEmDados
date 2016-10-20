@@ -46,7 +46,7 @@ svg{
 }
 .manu-text{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 15px;
 	fill: black;
 	cursor: pointer;	
@@ -84,7 +84,7 @@ svg{
 }
 .subjects{
 	text-anchor:left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 17px;
 	fill: black;	
 }
@@ -96,7 +96,7 @@ svg{
 }
 .stateText{
 	text-anchor: middle;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 35px;
 	fill: black;
 }
@@ -106,7 +106,7 @@ svg{
 }
 .textinho{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 17px;
 	fill: black;
 }

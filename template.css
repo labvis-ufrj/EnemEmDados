@@ -5,7 +5,9 @@ background: #fff;
   padding-bottom: 10px;
 }
 
-
+text{
+  font-family: typewryter, courier;
+}
 .container{
 /*alinhamento horizontal do menu principal, com ponto de orientação no meio. 50% todos os icones com espaçamento igual centralizados no meio*/
   width: 92%; 

@@ -6,7 +6,7 @@ svg{
 }
 .options{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 15px;
 	fill: grey;	
 	cursor: pointer;
@@ -18,19 +18,19 @@ svg{
 }
 .nameText{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 30px;
 	fill: black;
 }
 .cartogramaText{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 17px;
 	fill: grey;
 }
 .textinho{
 	text-anchor: left;
-	font-family: typewriter;
+	font-family: typewriter, courier;
 	font-size: 17px;
 	fill: black;
 }

@@ -246,7 +246,7 @@ var maxVal = minVal = 0;
 	        .attr("x", cartogramaTextX )
 	        .attr("y", cartogramaTextY )
 	        //.style("text-anchor", "middle")
-	        .text(function(d, i){return "Cartograma";});
+	        .text(function(d, i){return "Médias em";});
 
 }
 

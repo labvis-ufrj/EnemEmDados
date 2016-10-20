@@ -83,7 +83,7 @@ console.log("entrou");
 	        .attr("x", positionYAxisX )
 	        .attr("y", positionYAxisY )
 	        //.style("text-anchor", "middle")
-	        .text("Quantidade")
+	        .text("Nº de Pessoas")
 	        .style("fill",cor[sub]);
 /*
 	grafico.selectAll(".y-axis .tick text")

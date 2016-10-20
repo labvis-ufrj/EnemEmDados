@@ -75,7 +75,7 @@ var nameTextX = fatorEscalaX * 450;
 var nameTextY = 350;
 
 //posicao do nome da visualizacao
-var cartogramaTextX = nameTextX;
+var cartogramaTextX = nameTextX +2;
 var cartogramaTextY = nameTextY - 25;
 
 

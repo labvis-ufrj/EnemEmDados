@@ -18,19 +18,19 @@ var scatterplotY = fatorEscalaY * 60;
 
 //menu com legendas
 var menuX = 30;
-var menuY = 40;
+var menuY = 65;
 
 //retângulo de seleção
-var menuBoxWidth = 200;
-var menuBoxHeigth = 20;
-var menuBoxX = 15;
-var menuBoxY = 15;
+var menuBoxWidth = 222;
+var menuBoxHeigth = 22;
+var menuBoxX = 30;
+var menuBoxY = 14;
 
 var espacoEntreMenus = 25;
 
 //posição dos ícones da legenda
-var figuresX = 180;
-var figuresY = 20;
+var figuresX = 230;
+var figuresY = 21;
 
 
 //posicao das escalas
@@ -38,8 +38,8 @@ var positionXAxisX = tamanhox/2;
 var positionXAxisY = tamanhoy*1.1;
 
 //Atencao com esse posicionamento, ele esta rotacionado
-var positionYAxisX = -tamanhoy/2;
-var positionYAxisY = -50;
+var positionYAxisX = -15;
+var positionYAxisY = -15;
 
 
 

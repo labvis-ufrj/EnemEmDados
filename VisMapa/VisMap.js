@@ -75,7 +75,7 @@ var maxVal = minVal = 0;
     	.attr("class", "text-left")
     	.attr("x", gradientText1X - gradientX-30)
     	.attr("y", gradientText1Y - gradientY + 15)
-    	.text(function(){return "" + minVal;});
+    	.text(function(){return "" + minVal.toFixed(0);});
 
     gradiente.selectAll(".text-right")
     	.data([0])
@@ -84,7 +84,7 @@ var maxVal = minVal = 0;
     	.attr("class", "text-right")
     	.attr("x", gradientText2X- gradientX)
     	.attr("y", gradientText2Y - gradientY + 15)
-    	.text(function(){return "" + maxVal;});
+    	.text(function(){return "" + maxVal.toFixed(0);});
 
 
 	map = vis.selectAll("g")
@@ -199,7 +199,7 @@ var maxVal = minVal = 0;
               	if (Number(d[subject])>((maxVal+minVal)/2)){return "white";}
               	return "black";})
 			.style("font-size","15px")
-			.text(function(d){return d[subject];})
+			.text(function(d){return Number(d[subject]).toFixed(1);})
 			.style("visibility", "hidden")
 			.style("text-anchor", "middle")
 			.on("mouseover", function(d,i) {
@@ -252,7 +252,7 @@ var maxVal = minVal = 0;
 
 function visMapUpgrade(subject){
 	
-	console.log("entrou");
+	//console.log("entrou");
 
 	var maxVal = minVal = 0;
 //	if (subject!="Geral"){
@@ -345,12 +345,12 @@ gradiente.selectAll(".retangulo1").remove();
 */
     gradiente.selectAll(".text-left")
     	.transition()
-    	.text(function(){return "" + minVal;})
+    	.text(function(){return "" + minVal.toFixed(0);})
     	.duration(600);
 
     gradiente.selectAll(".text-right")
     	.transition()
-    	.text(function(){return "" + maxVal;})
+    	.text(function(){return "" + maxVal.toFixed(0);})
     	.duration(600);
 
 

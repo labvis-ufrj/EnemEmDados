@@ -49,16 +49,16 @@ var gradient2Y = gradientY;
 
 
 
-var gradientText1X = gradientX - 20;
+var gradientText1X = gradientX - 10;
 var gradientText1Y = gradientY;
 
-var gradientText2X = gradientX + gradientWidth + 5;
+var gradientText2X = gradientX + gradientWidth + 12;
 var gradientText2Y = gradientY;
 
 
 //menu com legendas
 var menuX = 30;
-var menuY = 40;
+var menuY = 65;
 
 
 //retângulo de seleção

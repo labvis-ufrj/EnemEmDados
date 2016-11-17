@@ -16,7 +16,7 @@ var posicaoY = fatorEscalaY * 150;
 //menu
 //var menuX = window.innerWidth*.045 ;
 var menuX = 0;
-var menuY = 90;
+var menuY = 100;
 
 //var tamanhoMenuX =600;
 //var tamanhoMenuY =250;
@@ -25,12 +25,12 @@ var separacaoMenuX = fatorEscalaX * 50;
 var separacaoMenuY =30;
 
 var shiftMenuX = window.innerWidth*.045;
-var shiftMenuY = 30;
+var shiftMenuY = 40;
 
 var quantidadePorColuna = 6;
 
 var posicaoMenuBrasilX = window.innerWidth*.045//menuX;
-var posicaoMenuBrasilY = 0//menuY - 30;
+var posicaoMenuBrasilY = 10//menuY - 30;
 
 
 

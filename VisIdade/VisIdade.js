@@ -3,7 +3,7 @@
 
 
 function VisIdade(sub, dados){
-console.log("entrou");
+//console.log("entrou");
 
 	grafico = vis.selectAll(".layout")
 			.data([0])
@@ -245,7 +245,7 @@ function update(sub, num){
 		.style("fill",cor[sub])
 		.duration(600);
 
-	console.log("num =" + num);
+	//console.log("num =" + num);
   	visAuxiliares.selectAll(".selected")
   		.transition()
   		.attr("x", posicaoAux[num].x - tamanhoAuxX*0.1)
@@ -403,8 +403,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -427,7 +427,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -446,7 +446,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -467,12 +467,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	
@@ -500,8 +500,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -524,7 +524,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -543,7 +543,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -564,12 +564,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	
@@ -596,8 +596,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -620,7 +620,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -639,7 +639,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -660,12 +660,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	
@@ -692,8 +692,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -716,7 +716,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -735,7 +735,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -756,12 +756,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	
@@ -788,8 +788,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -812,7 +812,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -831,7 +831,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -852,12 +852,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	
@@ -884,8 +884,8 @@ function makeMenu(subjeto){
       		estadoAtual = d;
 	      	d3.csv("./estados/" + d + ".csv" ,function(data){
 				dataset = data ;
-				console.log("menu");
-				console.log(dataset);
+				//console.log("menu");
+				//console.log(dataset);
 
 		
 			     sub = maxQuant = 0;
@@ -908,7 +908,7 @@ function makeMenu(subjeto){
 				};
 				 primeiraIdade = 0;
 				while (1){
-					console.log(dataset)
+					//console.log(dataset)
 					if (dataset[primeiraIdade].quantidade != "0"){break}
 					primeiraIdade++;
 				};
@@ -927,7 +927,7 @@ function makeMenu(subjeto){
 				    .range([0,tamanhox]);
 
 
-				console.log(maxQuant)
+				//console.log(maxQuant)
 				 quantScale2 = d3.scale.linear()
 				    .domain([0, maxQuant*1.05])
 				    .range([tamanhoy, 0]);
@@ -948,12 +948,12 @@ function makeMenu(subjeto){
 					}
 					
 				};
-				console.log(subject + " " + subjects[contador] );
-				console.log(contador);
+				//console.log(subject + " " + subjects[contador] );
+				//console.log(contador);
 	    		//VisIdade(""+subject, dataset);
 	    		update("" + subject, contador);
 	    		for (var indice = 0; indice < subjects.length; indice++){
-	    			console.log("indice = "+ indice);
+	    			//console.log("indice = "+ indice);
 	          		updateAuxiliar(indice, subjects[indice], dataset);
 	      		};
     	

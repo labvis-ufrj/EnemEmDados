@@ -119,7 +119,7 @@
 			//d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 			d3.csv("./estados/Brasil.csv",function(data){	
 				dataset = data ;
-				console.log(dataset);
+				//console.log(dataset);
 	      
 
 			maxQuant = maxVal = minVal = minQuant = 0;
@@ -225,7 +225,7 @@
 	          	//update(""+subject);
 				d3.csv("./estados/" + state + ".csv" ,function(data){
 					dataset = data ;
-					console.log(dataset);
+					//console.log(dataset);
 
 			
 				     sub = maxQuant = 0;
@@ -266,7 +266,7 @@
 					    .range([0,tamanhox]);
 
 
-					console.log(maxQuant)
+					//console.log(maxQuant)
 					 quantScale2 = d3.scale.linear()
 					    .domain([0, maxQuant*1.05])
 					    .range([tamanhoy, 0]);

@@ -65,7 +65,7 @@ function VisGeral(){
 			.enter()
 			.append("text")      // text label for the x axis
 	        .attr("class", "y-axis-text")
-	        .attr("transform", "rotate(-90)")
+	        //.attr("transform", "rotate(-90)")
 	        .attr("x", positionYAxisX )
 	        .attr("y", positionYAxisY )
 	        .style("text-anchor", "middle")
@@ -296,7 +296,18 @@ function VisGeral(){
 	      });
 
 
+		var disciplinas = [//"Estado",
+			"Linguagens",
+            "Humanas", 
+            "Natureza",
+            "Redacao",
+            "Matematica"];
 
+        for (var subs = 0; subs< disciplinas.length; subs++){
+        	grafico.selectAll(".dot"+ disciplinas[subs])
+				.classed("active", true);
+				//console.log("novo");
+        }
 
 }
 
@@ -308,14 +319,27 @@ function VisGeral(){
 
 
 function VisGeralUpdate(dados, sub){
-console.log(sub)
+////console.log(sub)
 	grafico.selectAll(".active")
 		.classed("active", false);
 
-
+	if (sub != "Estado") {
 	grafico.selectAll(".dot"+ sub)
 		.classed("active", true);
+	}else{
+		var disciplinas = [//"Estado",
+			"Linguagens",
+            "Humanas", 
+            "Natureza",
+            "Redacao",
+            "Matematica"];
 
+        for (var subs = 0; subs< disciplinas.length; subs++){
+        	grafico.selectAll(".dot"+ disciplinas[subs])
+				.classed("active", true);
+				//console.log("novo");
+        } 
+	}
 
 
  	var stateScale2 = function(d){
@@ -402,5 +426,5 @@ console.log(sub)
   	      .delay(function(d, i){return 120*i;})
 	      .duration(1000);
 
-console.log(dados);
+//console.log(dados);
 }

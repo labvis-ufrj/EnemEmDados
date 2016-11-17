@@ -91,7 +91,7 @@
 
 
 			var reordenar = function(subject){
-	          console.log(subject);
+	          //console.log(subject);
 	          	var dados = dataset;
 				function compare2(a,b) {
 					if (subject != "Estado"){
@@ -126,7 +126,7 @@
 				}
 
 				dataset.sort(compare);
-				console.log(dataset);
+				//console.log(dataset);
 	      
 			var prod = ["Estado",
 	                    "Linguagens",
@@ -189,7 +189,7 @@
 				.append("text")
 				.classed(function(d,i){return d;}, true)
 				.text("")
-		        .attr("x", function(d, i) { return menuBoxWidth + 30; })
+		        .attr("x", function(d, i) { return menuBoxWidth - 70; })
  		        .attr("y", function(d, i){ return (i)*espacoEntreMenus + 30;})
  		        .attr("class", "grades");
 
@@ -214,7 +214,7 @@
 		      .attr("class", "dotHumanas")
 		      .attr("r", 5)
 		      .attr("cx", function(d, i) { return figuresX + 5; })
-		      .attr("cy", function(d, i){ return 2*espacoEntreMenus + figuresY + 5/2;});  
+		      .attr("cy", function(d, i){ return 2*espacoEntreMenus + figuresY + 8/2;});  
 
 
 		    menu.selectAll(".dotNatureza")
@@ -224,7 +224,7 @@
 		      .attr("class", "dotNatureza")
 		      .attr("r", 5)
 		      .attr("cx", function(d, i) { return figuresX + 5; })
-		      .attr("cy", function(d, i){ return 3*espacoEntreMenus + figuresY + 5/2;});   
+		      .attr("cy", function(d, i){ return 3*espacoEntreMenus + figuresY + 8/2;});   
 
 	      	menu.selectAll(".dotMatematica")
 		      .data([0])

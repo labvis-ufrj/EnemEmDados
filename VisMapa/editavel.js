@@ -62,9 +62,9 @@ var menuY = 65;
 
 
 //retângulo de seleção
-var menuBoxWidth = 135;
+var menuBoxWidth = 125;
 var menuBoxHeigth = 20;
-var menuBoxX = 15;
+var menuBoxX = 25;
 var menuBoxY = 15;
 
 var espacoEntreMenus = 25;

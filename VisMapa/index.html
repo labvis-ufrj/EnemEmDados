@@ -15,10 +15,10 @@
 		    	<div class="links">
 			        <nav>
 			        	<ul class="nav nav-pills pull-left">
-			        		<li  role="presentation" padding-top= "10px"><a href="../index.html"><img src="../imgs/enemEmDados.png" alt="Enem em Dados" height="50" border="0" ></a></li>
-				            <li role="presentation" ><a href="../VisMapa/index.html"><img src="../imgs/hexagonoP.png" alt="Vis Map" height="50" border="0"></a></li>
-				            <li role="presentation"><a href="../VisGeral/index.html"><img src="../imgs/dispercao.png" alt="Dispersao" height="50" border="0"></a></li>
-			            	<li role="presentation"><a href="../VisIdade/index.html"><img src="../imgs/barras.png" alt="Vis Map"  height="50" border="0"></a></li>
+			        		<li  class="li1" role="presentation" padding-top= "10px"><a href="../index.html"><p class="indice1">ENEM</p><p class="indice2">EM_DADOS</p></a></li>
+				            <li class="li2 active" role="presentation"><a href="../VisMapa/index.html">MÉDIAS POR REGIÃO</a></li>
+				            <li class="li3" role="presentation"><a href="../VisGeral/index.html">MÉDIAS ORDENADAS</a></li>
+			            	<li class="li4" role="presentation" ><a href="../VisIdade/index.html">PESSOAS/FAIXA ETÁRIA</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -41,9 +41,10 @@
 			
 	        var traducao = {Matematica: "Matemática",
 			            Linguagens: "Linguagens",
-			            Humanas: "Humanas", 
-			            Natureza: "Natureza",
-			            Redacao: "Redação"};
+			            Humanas: " Ciên. Humanas", 
+			            Natureza: "Ciên. Natureza",
+			            Redacao: "Redação",
+						Geral: "Média geral"};
 
 
 			var svg = d3.select("div.visualizacao").append("svg")
@@ -87,7 +88,7 @@
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
 */	
-
+/*
 		    vis.selectAll(".imagem")
 		    	.data([0])
 		    	.enter()
@@ -99,9 +100,9 @@
 				.attr('height', 139*.6)
 				.attr("xlink:href","./explicacao_mapa.png");
 
-
+*/
 			var dataset = [];
-			d3.csv("tabelaVisMapa.csv",function(data){
+			d3.csv("tabelaVisMapaComGeral.csv",function(data){
 				dataset = data ;
 				//console.log(dataset);
 /*	      
@@ -126,7 +127,7 @@
 */
 
 
-
+/*
 		svg.selectAll(".textinho")
 			.data([0])
 			.enter()
@@ -135,8 +136,9 @@
 			.text("Classificar por")
 			.attr("x", textinhoX)
 			.attr("y", textinhoY);
-
-        var prod = ["Matematica",
+*/
+        var prod = ["Geral",
+					"Matematica",
                     "Linguagens",
                     "Humanas", 
                     "Natureza",
@@ -144,45 +146,94 @@
 
         var subject = prod[0];
 
-		menu = svg.append("g")
-				.attr("class", "menu")
-				.attr("transform", function (d,i) { return "translate(" + menuX +","+ menuY +")";});
-
-		menu.selectAll(".selected")
-			.data([0])
-			.enter()
-			.append("rect")
-			.attr("class", "selected")
-			.attr("width", menuBoxWidth)
-			.attr("height", menuBoxHeigth)
-			.attr("x", function(){ return menuBoxX;})
-			.attr("y", function(){ return menuBoxY;});
-
+/*
 		menu.selectAll(".options")
 			.data(prod)
 			.enter()
 			.append("text")
 			.text( function (d) { return "" + traducao[d]; })
 	        .attr("x", function(d, i) { return 40; })
-		        .attr("y", function(d, i){ return i*espacoEntreMenus + 30;})
-		        .attr("class", "options")
-		        .on("click", function(d, i){
-		        	//map.remove();
-		           visMapUpgrade("" + d);
-		           d3.selectAll(".options").style("font-weight","normal");
-		           d3.select(this).style("font-weight","bold"); 	
-				
-					menu.selectAll(".selected")
-						.transition()
-						.attr("y", function(){ return i*espacoEntreMenus + menuBoxY;})
-						.duration(1000);
+			.attr("y", function(d, i){ return i*espacoEntreMenus + 30;})
+			.attr("class", "options")
+			.on("click", function(d, i){
+				//map.remove();
+				visMapUpgrade("" + d);
+				d3.selectAll(".options").style("font-weight","normal");
+				d3.select(this).style("font-weight","bold"); 	
+			
+				menu.selectAll(".selected")
+					.transition()
+					.attr("y", function(){ return i*espacoEntreMenus + menuBoxY;})
+					.duration(1000);
 
-		        });
+			});*/
 
+
+		var textoGroup = svg.selectAll(".textoGroup")
+					.data([0])
+					.enter()
+					.append("g")
+					.attr("class","textoGroup");
+
+		var  texto = textoGroup.selectAll(".textinho")
+					.data(textoVector)
+					.enter()
+					.append("text")
+					.attr("class","textinho")
+					.text(function(d, i){return d;})
+					.attr("x", function(d, i) { return textinhoX; })
+					.attr("y", function(d, i){ return textinhoY + 15*i;})
+			
+
+		var nomesDisciplinasGroup = svg.selectAll(".nomesDisciplinasGroup")
+					.data([0])
+					.enter()
+					.append("g")
+					.attr("class","nomesDisciplinasGroup");
+	var subjects = ["Geral",
+					"Linguagens",
+					"Humanas", 
+					"Natureza",
+					"Redacao",
+					"Matematica"];
+
+
+
+		var  nomesDisciplinas = textoGroup.selectAll(".nomesDisciplinas")
+					.data(subjects)
+					.enter()
+					.append("text")
+					.attr("class","nomesDisciplinas")
+					.text(function(d, i){return traducao[d];})
+					.attr("x", function(d, i) { return posicaoAux[i].x +10; })
+					.attr("y", function(d, i){ return posicaoAux[i].y-5;})
 
 
 
 	        VisMap(""+subject);
+	        subjects = ["Geral",
+                "Linguagens",
+                "Humanas", 
+                "Natureza",
+                "Redacao",
+                "Matematica"];
+
+			for (var num = 0; num < subjects.length; num++){
+				makeVisAuxiliar(num, subjects[num], dataset);
+			}
+
+
+		var selected = vis.selectAll(".selected")
+			.data([0])
+			.enter();
+
+			selected.append("rect")
+			.attr("class", "selected")
+			.attr("width", menuBoxWidth)
+			.attr("height", menuBoxHeigth)
+			.attr("x", function(){ return menuBoxX + 3;})
+			.attr("y", function(){ return menuBoxY;});
+
 	      });
 
 //console.log(window.innerWidth);

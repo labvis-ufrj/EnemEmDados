@@ -87,10 +87,11 @@ var maxVal = minVal = 0;
     	.text(function(){return "" + maxVal.toFixed(0);});
 
 
-	map = vis.selectAll("g")
+	map = vis.selectAll(".mapaPrincipal")
 		    .data(dataset)
 		    .enter()
 		    .append("g")
+		    .attr("class", "mapaPrincipal")
 			.attr("transform",function(d,i){return "translate(" + mapX + "," + mapY + "0)";});
 
 	    map.append("polygon")
@@ -354,7 +355,7 @@ gradiente.selectAll(".retangulo1").remove();
     	.duration(600);
 
 
-	map = vis.selectAll("g");
+	map = vis.selectAll(".mapaPrincipal");
 
 	    map.selectAll(".poligonos")
 	    	.transition()
@@ -376,7 +377,7 @@ gradiente.selectAll(".retangulo1").remove();
 
 		tx = map.selectAll(".nota")
 			.transition()
-			.text(function(d){return d[subject];})
+			.text(function(d){return Number(d[subject]).toFixed(1);})
 			.duration(600);
 			//.on("mouseover", this.style("visibility", "visible"));
 
@@ -385,5 +386,109 @@ gradiente.selectAll(".retangulo1").remove();
 	        .text(function(d, i){return "" + traducao[subject]})
 	        .duration(600);
 
+
+}
+
+function makeVisAuxiliar(num, sub, dados){
+
+
+	var maxVal = minVal = 0;
+//	if (subject!="Geral"){
+		maxVal = minVal = Number(dataset[0][sub]);
+		for (indice = 0; indice < dataset.length ; indice++){
+			if (Number(dataset[indice][sub]) > maxVal){
+				maxVal = Number(dataset[indice][sub]);
+			};
+			if (Number(dataset[indice][sub]) < minVal){
+				minVal = Number(dataset[indice][sub]);
+			};
+		};
+		/* else {
+
+	}
+*/
+
+	var colorGrades = d3.scale.linear()
+	    .domain([minVal, (minVal + (maxVal - minVal)/2)])
+	    .range([ corMinima[sub], corDoMeio[sub]]);
+
+	var colorGrades2 = d3.scale.linear()
+	    .domain([(minVal + (maxVal - minVal)/2), maxVal])
+	    .range([ corDoMeio[sub], corMaxima[sub]]);
+
+	var opacityGrades = d3.scale.linear()
+	    .domain([minVal, maxVal])
+	    .range([0.25,0.9]);
+
+
+
+	var graficosAuxiliares = vis.selectAll(".mapAuxiliar" + sub)
+		    .data(dataset)
+		    .enter()
+		    .append("g")
+		    .attr("class", "mapAuxiliar" + sub)
+			.attr("transform",function(d,i){return "translate(" + posicaoAux[num].x + "," + posicaoAux[num].y + ")";});
+
+	graficosAuxiliares.append("polygon")
+		    .attr("points", function(d){
+		    	var point = [];
+		    	point[1] = (Number(d.x)*AuxDx + raioAux) + ','
+		    	point[2] = Number(d.y)*AuxDy + ' '
+		    	point[3] = (Number(d.x)*AuxDx + raioAux/2) + ','
+		    	point[4] = (Number(d.y)*AuxDy - raioAux*Math.sqrt(3)/2)+ ' '
+		    	point[5] = (Number(d.x)*AuxDx - raioAux/2) + ','
+		    	point[6] = (Number(d.y)*AuxDy - raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[7] = (Number(d.x)*AuxDx - raioAux) + ','
+		    	point[8] = Number(d.y)*AuxDy + ' '
+		    	point[9] = (Number(d.x)*AuxDx - raioAux/2) + ','
+		    	point[10] = (Number(d.y)*AuxDy + raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[11] = (Number(d.x)*AuxDx + raioAux/2) + ','
+		    	point[12] = (Number(d.y)*AuxDy + raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[13] = (Number(d.x)*AuxDx + raioAux)+ ','
+		    	point[14] = Number(d.y)*AuxDy
+		    	
+		    	var points = '';
+
+		    	for (i = 1; i < point.length; i++) { 
+				    points += point[i];
+				}
+		    	return points})
+		    .attr("class", "poligonos")
+		    .style("stroke",function(d){
+		    	if(Number(d[sub])< (minVal + (maxVal - minVal)/2)){
+		    		return colorGrades(Number(d[sub]));
+		    	}
+		    	return colorGrades2(Number(d[sub]));
+			})
+		    .style("opacity", 1)//function(d){return opacityGrades(Number(d[sub]))})
+		    .style("stroke-width",espessuraContornoAux)
+		    .style("fill", function(d){
+		    	if(Number(d[sub])< (minVal + (maxVal - minVal)/2)){
+		    		return colorGrades(Number(d[sub]));
+		    	}
+		    	return colorGrades2(Number(d[sub]));
+		});
+
+		var clickRects = vis.selectAll(".clickRect" + sub)
+						.data([sub])
+						.enter()
+						.append("g")
+						.attr("transform",function(d,i){return "translate(" + posicaoAux[num].x + "," + posicaoAux[num].y + ")";})
+						.append("rect")
+						.attr("class", "clickRect" + sub)
+						.classed("clickRect", true)
+						.attr("width", function(){ return tamanhoAuxX;})
+						.attr("height",function(){ return tamanhoAuxY;})
+						.attr("x", auxiliarShiftX)
+						.on("click", function(d){
+							visMapUpgrade("" + d);
+							//d3.selectAll(".options").style("font-weight","normal");
+							//d3.select(this).style("font-weight","bold"); 	
+							vis.selectAll(".selected")
+								.transition()
+								.attr("x", function(i){return posicaoAux[num].x + 3;})
+								.attr("y", function(d){ return posicaoAux[num].y;})
+								.duration(1000);
+						});
 
 }

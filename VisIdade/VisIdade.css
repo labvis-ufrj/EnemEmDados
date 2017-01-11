@@ -46,7 +46,7 @@ svg{
 }
 .manu-text{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: black;
 	cursor: pointer;	
@@ -84,7 +84,7 @@ svg{
 }
 .subjects{
 	text-anchor:left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 17px;
 	fill: black;	
 }
@@ -96,7 +96,7 @@ svg{
 }
 .stateText{
 	text-anchor: middle;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 35px;
 	fill: black;
 }
@@ -104,9 +104,16 @@ svg{
 	stroke: grey ;
 	stroke-width: 1px;
 }
-.textinho{
+.textinhoIndice{
 	text-anchor: left;
-	font-family: typewriter, courier;
-	font-size: 17px;
+	font-family: Ubuntu, courier;
+	font-size: 14px;
 	fill: black;
 }
+.textinhoExplicacao{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 12px;
+	fill: black;
+}
+

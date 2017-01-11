@@ -6,7 +6,7 @@ svg{
 }
 .options{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: grey;	
 	cursor: pointer;
@@ -18,19 +18,25 @@ svg{
 }
 .nameText{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 30px;
 	fill: black;
 }
 .cartogramaText{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 17px;
 	fill: grey;
 }
 .textinho{
 	text-anchor: left;
-	font-family: typewriter, courier;
-	font-size: 17px;
+	font-family: Ubuntu, courier;
+	font-size: 12px;
 	fill: black;
+}
+.clickRect{
+	stroke: none;
+	stroke-width: 1px;
+	fill: transparent;		
+	cursor: pointer;
 }

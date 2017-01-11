@@ -14,10 +14,10 @@
 			    	<div class="links">
 				        <nav>
 				        	<ul class="nav nav-pills pull-left">
-				        		<li role="presentation" padding-top= "10px"><a href="../index.html"><img src="../imgs/enemEmDados.png" alt="Enem em Dados" height="50" border="0" ></a></li>
-					            <li role="presentation"><a href="../VisMapa/index.html"><img src="../imgs/hexagono.png" alt="Vis Map" height="50" border="0"></a></li>
-					            <li role="presentation"><a href="../VisGeral/index.html"><img src="../imgs/dispercao.png" alt="Dispersao" height="50" border="0"></a></li>
-				            	<li role="presentation" ><a href="../VisIdade/index.html"><img src="../imgs/barrasP.png" alt="Vis Map"  height="50" border="0"></a></li>
+				        		<li class="li1" role="presentation" padding-top= "10px"><a href="../index.html"><p class="indice1">ENEM</p><p class="indice2">EM_DADOS</p></a></li>
+								<li class="li2" role="presentation"><a href="../VisMapa/index.html">MÉDIAS POR REGIÃO</a></li>
+								<li class="li3" role="presentation"><a href="../VisGeral/index.html">MÉDIAS ORDENADAS</a></li>
+								<li class="li4 active" role="presentation" ><a href="../VisIdade/index.html">PESSOAS/FAIXA ETÁRIA</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -84,14 +84,29 @@
 			      .style("font-size","15px");
 */	
 
-		vis.selectAll(".textinho")
+		vis.selectAll(".textinhoIndice")
 			.data([0])
 			.enter()
 			.append("text")
-			.attr("class", "textinho")
+			.attr("class", "textinhoIndice")
 			.text("Localidade")
 			.attr("x", textinhoX)
-			.attr("y", textinhoY);	
+			.attr("y", textinhoIndiceY);	
+
+		var textoGroup = vis.selectAll(".textoGroup")
+					.data([0])
+					.enter()
+					.append("g")
+					.attr("class","textoG");
+
+		var  texto = textoGroup.selectAll(".textinhoExplicacao")
+					.data(textoVector)
+					.enter()
+					.append("text")
+					.attr("class","textinhoExplicacao")
+					.text(function(d, i){return d;})
+					.attr("x", function(d, i) { return textinhoX; })
+					.attr("y", function(d, i){ return textinhoY + 15*i;})
 
 
 			var subject = "";
@@ -104,6 +119,7 @@
 		     var quantScale;
 
 		    //imagem = 
+			/*
 		    vis.selectAll(".imagem")
 		    	.data([0])
 		    	.enter()
@@ -114,7 +130,7 @@
 				.attr('width',365* .6)
 				.attr('height', 289*.6)
 				.attr("xlink:href","./explicacao_idade.png");
-
+*/
 
 			//d3.csv("MEDIAS_VIS_AGE2.csv",function(data){
 			d3.csv("./estados/Brasil.csv",function(data){	
@@ -179,143 +195,11 @@
 			 gradeScale = gradeScale2;
 			 quantScale = quantScale2;
 
-/*
-	        var subjectMenu = d3.select("#menus").append("select").attr("id", "stateMenu");
-	        var prod = ["geral",	
-	        			"AC",	 
-						"AL",	 
-						"AM",	 
-						"AP",	 
-						"BA",	 
-						"CE",	 
-						"DF",	 
-						"ES",	 
-						"GO",	 
-						"MA",	 
-						"MG",	 
-						"MS",	 
-						"MT",	 
-						"PA",	 
-						"PB",	 
-						"PE",	 
-						"PI",	 
-						"PR",	 
-						"RJ",	 
-						"RN",	 
-						"RO",	 
-						"RR",	 
-						"RS",	 
-						"SC",	 
-						"SE",	 
-						"SP",	 
-						"TO"];
 
-	        subjectMenu.selectAll("option").data(prod).enter().append("option")
-	          	.attr("value", function (d) { return d })
-	          	.text(function (d) { return d });
-
-	        var subject = prod[0];
-
-	        d3.select("#stateMenu").on("change", function() {
-	        	//grafico.remove();
-				
-				//grafico.remove();
-
-	          	state = d3.select("#stateMenu").property("value");
-	          	//update(""+subject);
-				d3.csv("./estados/" + state + ".csv" ,function(data){
-					dataset = data ;
-					//console.log(dataset);
-
-			
-				     sub = maxQuant = 0;
-						maxVal = minVal = Number(dataset[0][subject]);
-					for (sub= 0; sub< subjects.length; sub++){
-						for (indice = 0; indice < dataset.length ; indice++){
-							if (Number(dataset[indice][subjects[sub]]) > maxVal){
-								maxVal = Number(dataset[indice][subjects[sub]]);
-							};
-							if (Number(dataset[indice][subjects[sub]]) < minVal){
-								minVal = Number(dataset[indice][subjects[sub]]);
-							};
-							if (Number(dataset[indice].quantidade) > maxQuant){
-								maxQuant = Number(dataset[indice].quantidade);
-							};
-							if (Number(dataset[indice].quantidade) < minQuant){
-								minQuant = Number(dataset[indice].quantidade);
-							};
-						};
-					};
-					 primeiraIdade = 0;
-					while (1){
-						if (dataset[primeiraIdade].quantidade != "0"){break}
-						primeiraIdade++;
-					};
-					 ultimaIdade = dataset.length - 1;
-					while (1){
-						if (dataset[ultimaIdade].quantidade != "0"){break}
-						ultimaIdade--;
-					};
-
-					 gradeScale2 = d3.scale.linear()
-					    .domain([minVal*0.975, maxVal*1.025])
-					    .range([tamanhoy, 0]);
-
-					 ageScale2 = d3.scale.linear()
-			    		.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
-					    .range([0,tamanhox]);
-
-
-					//console.log(maxQuant)
-					 quantScale2 = d3.scale.linear()
-					    .domain([0, maxQuant*1.05])
-					    .range([tamanhoy, 0]);
-
-
-					 ageScale = ageScale2;
-					 gradeScale = gradeScale2;
-					 quantScale = quantScale2;
-
-				
-	        		//VisIdade(""+subject, dataset);
-	        		update("" + subject);
-	        	});
-
-	        });
-
-*/
-/*	        var subjectMenu = d3.select("#menus").append("select").attr("id", "subjectMenu");
-	        var prod = ["geral",
-	                    "linguagens",
-	                    "humanas", 
-	                    "natureza",
-	                    "redacao",
-	                    "matematica"];
-	        subjectMenu.selectAll("option").data(prod).enter().append("option")
-	          .attr("value", function (d) { return d })
-	          .text(function (d) { return d });
-
-	        subject = prod[0];
-
-	        d3.select("#subjectMenu").on("change", function() {
-	        	//grafico.remove();
-	          subject = d3.select("#subjectMenu").property("value");
-	          update(""+subject);
-	        });
-*/
 			estadoAtual = "Brasil";
 			subject = "geral";
 		makeMenu(subject);
         VisIdade(""+subject, dataset);
-
-/*
-			manuImage = vis.append("image")
-					.attr('xlink:href','./menu-icon.png')
-					.attr('class', 'manu-img')
-					.attr('height', '50')
-					.attr('width', '50')
-					.on("click", function(){ makeMenu(subject)});
-*/
 
 
 			visAuxiliares = vis.selectAll(".visAuxiliares")

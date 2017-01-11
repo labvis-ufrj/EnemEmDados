@@ -87,9 +87,22 @@ var stateTextY = 168;
 var cor = {geral:"#c9b1b2",
 		matematica:"#ff7b81",
             linguagens:"#7c86ab",
-            humanas:"#f0efae", 
+            humanas:"#eeee70", 
             natureza:"#95cb9a",
             redacao:"#92538f"};
 
 var textinhoX = window.innerWidth*.045; //mude na variável menuX para ficar alinhado
-var textinhoY = 50;
+var textinhoY = 500;
+var textinhoIndiceY = 50;
+
+var textoVector = ["As barras mostram a quantidade",
+                    "de pessoas por faixa etária que",
+                    "fizeram a prova, com eixo",
+                    "quantitativo à esquerda.",
+                    "A primeirabarra são os menores",
+                    "de 15 (-15), e aúltima representa",
+                    "os maiores de 50 (+50).",
+                    " ",
+                    "A linha representa a média de",
+                    "cada faixa etária, com eixo à",
+                    "direita."];

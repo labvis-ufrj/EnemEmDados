@@ -44,4 +44,11 @@ var positionYAxisY = -15;
 
 
 var textinhoX = menuX + 40; //mude na variável menuX para ficar alinhado
-var textinhoY = 50;
+var textinhoY = 550;
+var textinhoIndiceY = 50;
+var textoVector = ["Cada forma geométrica representa",
+                    "uma média de um estado. Ao",
+                    "escolher uma disciplina, os",
+                    "estados se reorganizam em ordem",
+                    "crescente da média em tal",
+                    "disciplina."];

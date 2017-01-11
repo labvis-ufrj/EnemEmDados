@@ -354,44 +354,44 @@ function VisGeralUpdate(dados, sub){
 		.attr("y1", 0)      // y position of the first end of the line
 		.attr("x2", function(d, i) { return stateScale(Number( stateScale2(d) )); })     // x position of the second end of the line
 		.attr("y2", tamanhoy)
-		.delay(function(d, i){return 120*i;})
-		.duration(1000);
+		.delay(function(d, i){return 60*i;})
+		.duration(600);
 		
   	grafico.selectAll(".dotLinguagens")
   		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
 	      .attr("y", function(d) { return gradeScale(Number(d["Linguagens"])); })
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 	      //.style("fill", function(d) { return "blue"; });
 
 	grafico.selectAll(".dotHumanas")
 		  .transition()
 	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Humanas"])); })
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 	grafico.selectAll(".dotNatureza")
 		  .transition()
 	      .attr("cx", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("cy", function(d) { return gradeScale(Number(d["Natureza"])); })
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 	grafico.selectAll(".dotMatematica")
 		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )) - 5; })
 	      .attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 	grafico.selectAll(".retangulos")
 		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) - 0.5 )); })
 	      //.attr("y", function(d) { return gradeScale(Number(d["Matematica"])); })
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 
 
@@ -414,8 +414,8 @@ function VisGeralUpdate(dados, sub){
 				    points += point[i];
 				}
 		    	return points})
-	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 
 
@@ -423,8 +423,8 @@ function VisGeralUpdate(dados, sub){
   		  .transition()
 	      .attr("x", function(d, i) { return stateScale(Number( stateScale2(d) )); })
 	      .attr("y", tamanhoy + 20)
-  	      .delay(function(d, i){return 120*i;})
-	      .duration(1000);
+  	      .delay(function(d, i){return 60*i;})
+	      .duration(600);
 
 //console.log(dados);
 }

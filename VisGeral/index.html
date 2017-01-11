@@ -10,17 +10,15 @@
 	</head>
 	<body>
 
-
-
 	    <div class="container" align="middle">
 		    <div class="header clearfix">
 		    	<div class="links">
 			        <nav>
 			        	<ul class="nav nav-pills pull-left">
-			        		<li role="presentation" padding-top= "10px"><a href="../index.html"><img src="../imgs/enemEmDados.png" alt="Enem em Dados" height="50" border="0" ></a></li>
-				            <li role="presentation"><a href="../VisMapa/index.html"><img src="../imgs/hexagono.png" alt="Vis Map" height="50" border="0"></a></li>
-				            <li role="presentation"><a href="../VisGeral/index.html"><img src="../imgs/dispercaoP.png" alt="Dispersao" height="50" border="0"></a></li>
-			            	<li role="presentation" ><a href="../VisIdade/index.html"><img src="../imgs/barras.png" alt="Vis Map"  height="50" border="0"></a></li>
+			        		<li class="li1" role="presentation" padding-top= "10px"><a href="../index.html"><p class="indice1">ENEM</p><p class="indice2">EM_DADOS</p></a></li>
+				            <li class="li2" role="presentation"><a href="../VisMapa/index.html">MÉDIAS POR REGIÃO</a></li>
+				            <li class="li3 active" role="presentation"><a href="../VisGeral/index.html">MÉDIAS ORDENADAS</a></li>
+			            	<li class="li4" role="presentation" ><a href="../VisIdade/index.html">PESSOAS/FAIXA ETÁRIA</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -45,7 +43,7 @@
 		         .attr("height","90%");
 
 
-
+/*
 			  var tooltip = d3.select("body")
 			      .append("div")
 			      .style("fill", "grey")
@@ -55,7 +53,7 @@
 			      .text("a simple tooltip")
 			      .style("font-size","15px");
 
-
+*/
 		    var dataset = [];
 		    var quantScale;
 		    //var stateScale2;
@@ -64,7 +62,7 @@
 		 
 			var maxQuant = maxVal = minVal = minQuant = 0;
 
-
+/*
 		    vis.selectAll(".imagem")
 		    	.data([0])
 		    	.enter()
@@ -76,17 +74,37 @@
 				.attr('height', 162*.6)
 				.attr("xlink:href","./explicacao_geral.png");
 
+*/
+
+		var textoGroup = vis.selectAll(".textoGroup")
+					.data([0])
+					.enter()
+					.append("g")
+					.attr("class","textoG");
+
+		var  texto = textoGroup.selectAll(".textinhoExplicacao")
+					.data(textoVector)
+					.enter()
+					.append("text")
+					.attr("class","textinhoExplicacao")
+					.text(function(d, i){return d;})
+					.attr("x", function(d, i) { return textinhoX; })
+					.attr("y", function(d, i){ return textinhoY + 15*i;})
+
+
+
+
 			d3.csv("tabelaVisGeral.csv",function(data){
 				dataset = data ;
 
-		vis.selectAll(".textinho")
+		vis.selectAll(".textinhoIndice")
 			.data([0])
 			.enter()
 			.append("text")
-			.attr("class", "textinho")
+			.attr("class", "textinhoIndice")
 			.text("Organizar por")
 			.attr("x", textinhoX)
-			.attr("y", textinhoY);
+			.attr("y", textinhoIndiceY);
 
 
 

@@ -32,9 +32,6 @@
 .dotLinguagens.active{
 	stroke: #666e8d;
 
-
-
-
 }
 .dotHumanas{
 	fill: #f0efad;
@@ -91,7 +88,7 @@
 }
 .y-axis-text{
 	text-anchor: middle;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: #aaa;
 }
@@ -100,19 +97,19 @@
 /*abreviaturas dos estados no gráfico*/
 .textLabels{
 	text-anchor: middle;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: black;
 }
 .x-axis-text{
 	text-anchor: middle;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: #aaa;
 }
 .options{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: grey;	
 	cursor: pointer;
@@ -136,15 +133,22 @@ svg{
 	stroke: grey ;
 	stroke-width: 1px;
 }
-.textinho{
+.textinhoIndice{
 	text-anchor: left;
-	font-family: typewriter, courier;
-	font-size: 17px;
+	font-family: Ubuntu, courier;
+	font-size: 14px;
+	fill: black;
+}
+
+.textinhoExplicacao{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 12px;
 	fill: black;
 }
 .grades{
 	text-anchor: left;
-	font-family: typewriter, courier;
+	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: grey;
 }

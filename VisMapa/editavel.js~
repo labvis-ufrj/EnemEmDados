@@ -15,7 +15,7 @@ var corMaxima = "rgb(05,00,49)";
 */
 
 var corMinima = {Matematica:"#ffc2c5",
-                Linguagens:"#f1f2f7",
+                Linguagens:"#d4d7c4",
                 Humanas:"#f3f1bf", 
                 Natureza:"#cfe8d3",
                 Redacao:"#e3cde2",

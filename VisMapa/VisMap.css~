@@ -2,7 +2,7 @@ svg{
 	background: white;
 }
 .text-left{
-	text-anchor: right;
+	text-anchor: left;
 }
 .options{
 	text-anchor: left;

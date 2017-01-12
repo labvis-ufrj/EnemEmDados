@@ -18,10 +18,10 @@
 	text-anchor:left;
 }
 .y-axis{
-	fill: #e36c71;
+	fill: #555;
 }
 .y-axis-text{
-	fill: #ffc2c5;
+	fill: #555;
 	text-anchor:middle;	
 }
 .z-axis-text{
@@ -29,7 +29,7 @@
 	fill:black;
 }
 .lineGrade{
-	stroke-width:2px;
+	stroke-width:1.2px;
 	stroke: black;
 	fill: none;
 	opacity: 1.0	
@@ -47,7 +47,7 @@ svg{
 .manu-text{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
-	font-size: 15px;
+	font-size: 14px;
 	fill: black;
 	cursor: pointer;	
 }
@@ -85,8 +85,8 @@ svg{
 .subjects{
 	text-anchor:left;
 	font-family: Ubuntu, courier;
-	font-size: 17px;
-	fill: black;	
+	font-size: 13.5px;
+	fill: grey;	
 }
 .selected{
 	stroke:grey;
@@ -107,7 +107,7 @@ svg{
 .textinhoIndice{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
-	font-size: 14px;
+	font-size: 16px;
 	fill: black;
 }
 .textinhoExplicacao{

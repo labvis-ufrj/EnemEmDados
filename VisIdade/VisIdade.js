@@ -159,9 +159,9 @@ function VisIdade(sub, dados){
 		  .attr("y2",function(d) { return gradeScale(Number(d[subject])); });	      //.attr("cx", function(d) { return ageScale(Number(d.idade)); })
 	      //.attr("cy", function(d) { return gradeScale(Number(d[subject])); });
 */
-  	manu.selectAll(".manu-text")
+ /* 	manu.selectAll(".manu-text")
   		.style("fill",function(d, i){if (i == 0){return "orange";}return;});
-
+*/
 	vis.selectAll(".stateText")
 		.data([0])
 		.enter()
@@ -299,7 +299,7 @@ function update(sub, num){
 */
 }
 function makeMenu(subjeto){
-
+/*
 	var prod = [//"Brasil",	
         			"AC",	 
 					"AL",	 
@@ -362,7 +362,7 @@ function makeMenu(subjeto){
 			   "RS"];
 			   sul.sort();
 
-
+*/
 		var subjects = ["geral",
 	                    "linguagens",
 	                    "humanas", 
@@ -376,32 +376,188 @@ function makeMenu(subjeto){
 				.enter()
 				.append("g")
 				.attr("class", "manu");
-/*
-	manu.selectAll(".manu-rect")
-	  .data([0])
-	  .enter()
-      .append("rect")
-      .attr("class", "manu-rect")
-      //.attr("r", 3.5)
-      .attr("x", function(d) { return 0;}) //- (ageScale(Number(dados[2].idade)) - ageScale(Number(dados[1].idade))/2); })
-      .attr("y", function(d) { return 0; })
-      .attr("width", function(){ return tamanhoMenuX;})
-      .attr("height",function(d, i){ return tamanhoMenuY;});
+
+	d3.csv("./tabelaVisMapaComGeral.csv",function(data2){	
+		dataset2 = data2 ;
+
+		map = vis.selectAll(".mapa")
+		    .data([0])
+		    .enter()
+		    .append("g")
+		    .attr("class", "mapa")
+			.attr("transform",function(d,i){return "translate(" + mapX + "," + mapY + ")";});
+
+
+		var poligonos = map.selectAll(".poligonosG")
+			.data(dataset2)
+			.enter()
+			.append("g")
+			.attr("class","poligonosG");
+
+
+		    poligonos.append("polygon")
+				.attr("points", function(d){
+		    	var point = [];
+		    	point[1] = (Number(d.x)*AuxDx + raioAux) + ','
+		    	point[2] = Number(d.y)*AuxDy + ' '
+		    	point[3] = (Number(d.x)*AuxDx + raioAux/2) + ','
+		    	point[4] = (Number(d.y)*AuxDy - raioAux*Math.sqrt(3)/2)+ ' '
+		    	point[5] = (Number(d.x)*AuxDx - raioAux/2) + ','
+		    	point[6] = (Number(d.y)*AuxDy - raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[7] = (Number(d.x)*AuxDx - raioAux) + ','
+		    	point[8] = Number(d.y)*AuxDy + ' '
+		    	point[9] = (Number(d.x)*AuxDx - raioAux/2) + ','
+		    	point[10] = (Number(d.y)*AuxDy + raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[11] = (Number(d.x)*AuxDx + raioAux/2) + ','
+		    	point[12] = (Number(d.y)*AuxDy + raioAux*Math.sqrt(3)/2) + ' ' 
+		    	point[13] = (Number(d.x)*AuxDx + raioAux)+ ','
+		    	point[14] = Number(d.y)*AuxDy
+		    	
+		    	var points = '';
+
+		    	for (i = 1; i < point.length; i++) { 
+				    points += point[i];
+				}
+		    	return points})
+		    .attr("class", "poligonos")
+		    /*.style("stroke",function(d){
+		    	if(Number(d[sub])< (minVal + (maxVal - minVal)/2)){
+		    		return colorGrades(Number(d[sub]));
+		    	}
+		    	return colorGrades2(Number(d[sub]));
+			})*/
+		    .style("opacity", 1)//function(d){return opacityGrades(Number(d[sub]))})
+		    .style("stroke-width",espessuraContornoAux)
+		    /*.style("fill", function(d){
+		    	if(Number(d[sub])< (minVal + (maxVal - minVal)/2)){
+		    		return colorGrades(Number(d[sub]));
+		    	}
+		    	return colorGrades2(Number(d[sub]));
+		});*/
+			.on("click", function(d,i){
+				if(d.estado != estadoAtual){
+					estadoAtual = d.estado;
+					d3.csv("./estados/" + d.estado + ".csv" ,function(data){
+						dataset = data ;
+						//console.log("menu");
+						//console.log(dataset);
+
+				
+						sub = maxQuant = 0;
+							maxVal = minVal = Number(dataset[0][subjeto]);
+						for (sub= 0; sub< subjects.length; sub++){
+							for (indice = 0; indice < dataset.length ; indice++){
+								if (Number(dataset[indice][subjects[sub]]) > maxVal){
+									maxVal = Number(dataset[indice][subjects[sub]]);
+								};
+								if (Number(dataset[indice][subjects[sub]]) < minVal){
+									minVal = Number(dataset[indice][subjects[sub]]);
+								};
+								if (Number(dataset[indice].quantidade) > maxQuant){
+									maxQuant = Number(dataset[indice].quantidade);
+								};
+								if (Number(dataset[indice].quantidade) < minQuant){
+									minQuant = Number(dataset[indice].quantidade);
+								};
+							};
+						};
+						primeiraIdade = 0;
+						while (1){
+							//console.log(dataset)
+							if (dataset[primeiraIdade].quantidade != "0"){break}
+							primeiraIdade++;
+						};
+						ultimaIdade = dataset.length - 1;
+						while (1){
+							if (dataset[ultimaIdade].quantidade != "0"){break}
+							ultimaIdade--;
+						};
+
+						gradeScale2 = d3.scale.linear()
+							.domain([minVal*0.975, maxVal*1.025])
+							.range([tamanhoy, 0]);
+
+						ageScale2 = d3.scale.linear()
+							.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+							.range([0,tamanhox]);
+
+
+						//console.log(maxQuant)
+						quantScale2 = d3.scale.linear()
+							.domain([0, maxQuant*1.05])
+							.range([tamanhoy, 0]);
+
+
+						ageScale = ageScale2;
+						gradeScale = gradeScale2;
+						quantScale = quantScale2;
+
+						var contador = 0;
+						while (1){
+							//contador++;
+							if (subject != subjects[contador]){
+								contador++;
+							}
+							if (subject == subjects[contador]){
+								break;
+							}
+							
+						};
+						//console.log(subject + " " + subjects[contador] );
+						//console.log(contador);
+						//VisIdade(""+subject, dataset);
+						update("" + subject, contador);
+						for (var indice = 0; indice < subjects.length; indice++){
+							//console.log("indice = "+ indice);
+							updateAuxiliar(indice, subjects[indice], dataset);
+						};
+				
+					});
+				}
+/*      	manu.selectAll(".manu-text")
+      		.style("fill",function(){return});
+
+      		d3.select(this).style("fill", "orange");
 */
-	 var vetor = ["Brasil"]
-	manu.selectAll(".manu-text .bra")
-	  .data(vetor)
-	  .enter()
-      .append("text")
-      .attr("class", "manu-text")
-      .classed("bra", true)
-      .attr("x",posicaoMenuBrasilX)
-      .attr("y", posicaoMenuBrasilY)
-      .text( function (d) { return "" + d; })
-      .on("click", function(d,i){
-      	if(d != estadoAtual){
-      		estadoAtual = d;
-	      	d3.csv("./estados/" + d + ".csv" ,function(data){
+      });
+
+		var textoPoligonos = poligonos.append("text")
+			.attr("class", "nome")
+			.style("text-anchor","middle")
+			.attr("x",function(d){return Number(d.x)*AuxDx + 0 ;})
+			.attr("y",function(d){return Number(d.y)*AuxDy + 4;})
+			/*.style("fill", function(d){
+              	if (Number(d[subject])>((maxVal+minVal)/2)){return "white";}
+              	return "black";})*/
+			/*.style("font-size","15px")*/
+			/*.style("text-anchor", "left")*/
+			.text(function(d){return d.estado;})
+			/*.on("mouseover", function(d,i) {
+		    	return	d3.selectAll("text")
+		    			.filter(function(e){
+		    				return d3.select(this).attr("class") == "nota";
+		    				})
+		    			.style("visibility",function(e){
+			    			if (e === d){
+			    				return "visible"
+			    			}
+			    			return "hidden"});
+			})*/
+			/*.on("mouseout", function(d, i) {
+				return d3.selectAll("text")
+		    			.filter(function(e){
+		    				return d3.select(this).attr("class") == "nota";
+		    				})
+		    			.style("visibility",function(e){
+			    			if (e === d){
+			    				return "hidden"
+			    			}
+			    			return "hidden"});
+			});*/
+			.on("click", function(d,i){
+      	if(d.estado != estadoAtual){
+      		estadoAtual = d.estado;
+	      	d3.csv("./estados/" + d.estado + ".csv" ,function(data){
 				dataset = data ;
 				//console.log("menu");
 				//console.log(dataset);
@@ -477,15 +633,121 @@ function makeMenu(subjeto){
 	      		};
     	
     		});
-
       	}
-      	manu.selectAll(".manu-text")
+/*      	manu.selectAll(".manu-text")
       		.style("fill",function(){return});
 
       		d3.select(this).style("fill", "orange");
-
+*/
       });
 
+
+
+
+
+
+
+	});
+
+
+		var vetor = ["Brasil"]
+		manu.selectAll(".manu-text .bra")
+		.data(vetor)
+		.enter()
+		.append("text")
+		.attr("class", "manu-text")
+		.classed("bra", true)
+		.attr("x",posicaoMenuBrasilX)
+		.attr("y", posicaoMenuBrasilY)
+		.text( function (d) { return "" + d; })
+		.on("click", function(d,i){
+			if(d != estadoAtual){
+				estadoAtual = d;
+				d3.csv("./estados/" + d + ".csv" ,function(data){
+					dataset = data ;
+					//console.log("menu");
+					//console.log(dataset);
+
+			
+					sub = maxQuant = 0;
+						maxVal = minVal = Number(dataset[0][subjeto]);
+					for (sub= 0; sub< subjects.length; sub++){
+						for (indice = 0; indice < dataset.length ; indice++){
+							if (Number(dataset[indice][subjects[sub]]) > maxVal){
+								maxVal = Number(dataset[indice][subjects[sub]]);
+							};
+							if (Number(dataset[indice][subjects[sub]]) < minVal){
+								minVal = Number(dataset[indice][subjects[sub]]);
+							};
+							if (Number(dataset[indice].quantidade) > maxQuant){
+								maxQuant = Number(dataset[indice].quantidade);
+							};
+							if (Number(dataset[indice].quantidade) < minQuant){
+								minQuant = Number(dataset[indice].quantidade);
+							};
+						};
+					};
+					primeiraIdade = 0;
+					while (1){
+						//console.log(dataset)
+						if (dataset[primeiraIdade].quantidade != "0"){break}
+						primeiraIdade++;
+					};
+					ultimaIdade = dataset.length - 1;
+					while (1){
+						if (dataset[ultimaIdade].quantidade != "0"){break}
+						ultimaIdade--;
+					};
+
+					gradeScale2 = d3.scale.linear()
+						.domain([minVal*0.975, maxVal*1.025])
+						.range([tamanhoy, 0]);
+
+					ageScale2 = d3.scale.linear()
+						.domain([Number(dataset[0].idade),Number(dataset[dataset.length-1].idade) + 1])
+						.range([0,tamanhox]);
+
+
+					//console.log(maxQuant)
+					quantScale2 = d3.scale.linear()
+						.domain([0, maxQuant*1.05])
+						.range([tamanhoy, 0]);
+
+
+					ageScale = ageScale2;
+					gradeScale = gradeScale2;
+					quantScale = quantScale2;
+
+					var contador = 0;
+					while (1){
+						//contador++;
+						if (subject != subjects[contador]){
+							contador++;
+						}
+						if (subject == subjects[contador]){
+							break;
+						}
+						
+					};
+					//console.log(subject + " " + subjects[contador] );
+					//console.log(contador);
+					//VisIdade(""+subject, dataset);
+					update("" + subject, contador);
+					for (var indice = 0; indice < subjects.length; indice++){
+						//console.log("indice = "+ indice);
+						updateAuxiliar(indice, subjects[indice], dataset);
+					};
+			
+				});
+
+			}
+/*			manu.selectAll(".manu-text")
+				.style("fill",function(){return});
+
+				d3.select(this).style("fill", "orange");
+*/
+		});
+/*
 	manu.selectAll(".manu-text .norte")
 	  .data(norte)
 	  .enter()
@@ -959,6 +1221,8 @@ function makeMenu(subjeto){
     	
     		});
       	}
+*/
+/*
       	manu.selectAll(".manu-text")
       		.style("fill",function(){return});
 
@@ -966,6 +1230,7 @@ function makeMenu(subjeto){
 
       });
 	manu.attr("transform", "translate(" + menuX + "," + menuY + ")");
+	*/
 /*
       manuImage.on("click", function(){
       	manu.remove();

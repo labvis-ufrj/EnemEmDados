@@ -116,4 +116,14 @@ svg{
 	font-size: 12px;
 	fill: black;
 }
+.poligonos{
+	fill: lightgray;
+	cursor: pointer;
+}
+.nome{
+	fill:black;
+	font-size: 12px;
+	text-anchor: left;
+	cursor: pointer;
+}
 

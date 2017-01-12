@@ -29,8 +29,8 @@ var shiftMenuY = 40;
 
 var quantidadePorColuna = 6;
 
-var posicaoMenuBrasilX = window.innerWidth*.045//menuX;
-var posicaoMenuBrasilY = 10//menuY - 30;
+var posicaoMenuBrasilX = 70//menuX;
+var posicaoMenuBrasilY = 280//menuY - 30;
 
 
 
@@ -108,3 +108,14 @@ var textoVector = ["As barras mostram a quantidade",
                     "A linha representa a média de",
                     "cada faixa etária, com eixo à direita."
                     ];
+//Para auxiliares:
+//raio circulo circunscrito ao hexagono
+var raioAux = 16;
+//separacoes verticais e horizontais entre os hexagonos
+//calculadas em funcao do raio
+var AuxDx = raioAux * 1.85;
+var AuxDy = raioAux * 2.25;
+var espessuraContornoAux = 1;
+
+var mapX = 55;
+var mapY = 100;

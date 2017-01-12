@@ -7,7 +7,7 @@ background: #fff;
 
 @font-face {
     font-family: Roboto Slab;
-    src: url("./Roboto_Slab/RobotoSlab-Regular.ttf") /* TTF file for CSS3 browsers */
+    src: url("./Roboto_Slab/RobotoSlab-Bold.ttf") /* TTF file for CSS3 browsers */
 }
 @font-face {
     font-family: Ubuntu;
@@ -29,8 +29,10 @@ text{
 /*distancia de cada lado do grupo de itens em particular*/
   padding-right: 0px;
   padding-left: 0px; 
-  background: lightgray;
+  background: #f2f2f2;
   font-family: 'Roboto Slab', serif;
+  overflow: auto;
+  display: table;
 }
 /*
 .navbar {
@@ -68,10 +70,12 @@ text{
 }*/
 
 .indice1{
-  padding-bottom: 0px;
+  padding-bottom: 5px;
+  font-size: 40;
 }
 .indice2{
   padding-top: 0px;
+  font-size: 22;
 }
 
 .nav li a{
@@ -83,11 +87,10 @@ text{
     color: #ffffff;
     background-color:transparent;
 }
-/*
+
 .pull-left {
-    color:transparent;
 }
-*/
+
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
   color: black;
   background-color: transparent; 
@@ -119,27 +122,33 @@ text{
   color: black;
 }
 .pull-left > .li2.active{
-  background-color: yellow;
+  background-color: #fefb88ff;
 }
 .li3{
-  border-bottom:5px solid blue;
+  border-bottom:5px solid cyan;
   padding-top: 30px;
 }
 .li3 > a{
   color: black;
 }
 .pull-left > .li3.active{
-  background-color: blue;
+  background-color: #a7fafeff;
 }
 .li4{
-  border-bottom:5px solid red;
+  border-bottom:5px solid pink;
   padding-top: 30px;
 }
 .li4 > a{
   color: black;
 }
 .pull-left > .li4.active{
-  background-color: red;
+  background-color: lightpink;
+}
+.li5{
+  border-bottom:5px solid red;
+  padding-top: 70px;
+  /*overflow: auto;*/
+  width: auto;
 }
 .pull-right{
   border-bottom:5px solid grey;

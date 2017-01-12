@@ -7,12 +7,12 @@
 var fatorEscalaX = window.innerWidth/1536;
 var fatorEscalaY = window.innerHeight / 755;
 
-var tamanhox = fatorEscalaX*1040;
-var tamanhoy = fatorEscalaY*503.3;
+var tamanhox = fatorEscalaX*950;
+var tamanhoy = fatorEscalaY*475.3;
 
 //posição do gráfico
-var scatterplotX = fatorEscalaX * 400;
-var scatterplotY = fatorEscalaY * 60;
+var scatterplotX = fatorEscalaX * 450;
+var scatterplotY = fatorEscalaY * 85;
 
 
 
@@ -44,11 +44,11 @@ var positionYAxisY = -15;
 
 
 var textinhoX = menuX + 40; //mude na variável menuX para ficar alinhado
-var textinhoY = 550;
-var textinhoIndiceY = 50;
+var textinhoY = 440;
+var textinhoIndiceY = 60;
 var textoVector = ["Cada forma geométrica representa",
-                    "uma média de um estado. Ao",
-                    "escolher uma disciplina, os",
-                    "estados se reorganizam em ordem",
-                    "crescente da média em tal",
-                    "disciplina."];
+                    "uma média de um estado.",
+                    "Ao escolher uma disciplina,",
+                    "os estados se reorganizam em ordem",
+                    "crescente da média em tal disciplina."];
+                    //"disciplina."];

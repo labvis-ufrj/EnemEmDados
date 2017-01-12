@@ -71,9 +71,20 @@ text{
 
 .indice1{
   padding-bottom: 5px;
-  font-size: 40;
+  font-size: 200%;
+  font-family: 'Roboto Slab', serif;
+  padding-right: 7px;
+}
+.indice1.active{
+  padding-bottom: 5px;
+  font-size: 150%;
 }
 .indice2{
+  padding-top: 0px;
+  font-size: 120%;
+  font-family: 'Roboto Slab', serif;
+}
+.indice2.active{
   padding-top: 0px;
   font-size: 22;
 }

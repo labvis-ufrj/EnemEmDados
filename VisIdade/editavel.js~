@@ -94,7 +94,7 @@ var cor = {geral:"#bbb",
             redacao:"#92538f"};
 
 var textinhoX = window.innerWidth*.045; //mude na variável menuX para ficar alinhado
-var textinhoY = 415;
+var textinhoY = 430;
 var textinhoIndiceY = 75;
 
 var textoVector = ["As barras mostram a quantidade",

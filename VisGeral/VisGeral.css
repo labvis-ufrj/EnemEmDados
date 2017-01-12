@@ -84,13 +84,13 @@
 }
 /*números do y do gráfico*/
 .y-axis text{
-	font-size: 10px;
+	font-size: 13px;
 }
 .y-axis-text{
 	text-anchor: middle;
 	font-family: Ubuntu, courier;
 	font-size: 15px;
-	fill: #aaa;
+	fill: grey;
 }
 
 
@@ -98,19 +98,19 @@
 .textLabels{
 	text-anchor: middle;
 	font-family: Ubuntu, courier;
-	font-size: 15px;
+	font-size: 14px;
 	fill: black;
 }
 .x-axis-text{
 	text-anchor: middle;
 	font-family: Ubuntu, courier;
 	font-size: 15px;
-	fill: #aaa;
+	fill: grey;
 }
 .options{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
-	font-size: 15px;
+	font-size: 14px;
 	fill: grey;	
 	cursor: pointer;
 }
@@ -136,7 +136,7 @@ svg{
 .textinhoIndice{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
-	font-size: 14px;
+	font-size: 16px;
 	fill: black;
 }
 

@@ -1,0 +1,129 @@
+/*BARRAS PARA IDADE - CSS*/
+
+.dotGrade{
+	fill: black;
+}
+
+/*barras - contorno*/
+.dotQuant{
+	fill: #ffc2c5;
+	stroke: white;
+	stroke-width: 1px;
+}
+.x-axis{
+	fill: black;
+}
+.x-axis-text{
+	fill: #black;
+	text-anchor:left;
+}
+.y-axis{
+	fill: #555;
+}
+.y-axis-text{
+	fill: #555;
+	text-anchor:middle;	
+}
+.z-axis-text{
+	text-anchor:middle;
+	fill:black;
+}
+.lineGrade{
+	stroke-width:1.2px;
+	stroke: black;
+	fill: none;
+	opacity: 1.0	
+}
+svg{
+	background: white;
+}
+.manu-rect{
+	fill: white;
+	opacity: .5;
+	stroke: gray;
+	stroke-opacity:.5;
+	stroke-width:2px;
+}
+.manu-text{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 14px;
+	fill: black;
+	cursor: pointer;	
+}
+
+/*Alterei daqui pra baixo*/
+
+.dotGradeAux{
+	fill: transparent;
+}
+
+/*barras - contorno*/
+.dotQuantAux{
+	fill: blue;
+	stroke: white;
+	stroke-width: .1px;
+}
+.x-axis-Aux{
+	fill: yellow;
+}
+.y-axis-Aux{
+	fill: aqua;
+}
+.z-axis-Aux{
+	fill: teal;
+}
+.lineGradeAux{
+	stroke-width:1px;
+	stroke: black;
+	fill: transparent;	
+}
+.clickRect{
+	fill: transparent;
+	cursor: pointer;
+}
+.subjects{
+	text-anchor:left;
+	font-family: Ubuntu, courier;
+	font-size: 13.5px;
+	fill: grey;	
+}
+.selected{
+	stroke:grey;
+	stroke-width:1px;
+	stroke-opacity:.8;
+	fill: none;
+}
+.stateText{
+	text-anchor: middle;
+	font-family: Ubuntu, courier;
+	font-size: 35px;
+	fill: black;
+}
+.domain-2{
+	stroke: grey ;
+	stroke-width: 1px;
+}
+.textinhoIndice{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 16px;
+	fill: black;
+}
+.textinhoExplicacao{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 12px;
+	fill: #555;
+}
+.poligonos{
+	fill: lightgray;
+	cursor: pointer;
+}
+.nome{
+	fill: #555;
+	font-size: 11px;
+	text-anchor: left;
+	cursor: pointer;
+}
+

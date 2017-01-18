@@ -1,0 +1,12 @@
+.textoInicial{
+    padding-top: 20px;
+    align-content: left;
+}
+.textoInicial p{
+    align-content: right;
+    font-family: 'Roboto Slab', serif;
+    font-size: 100%;
+}
+.initialImage{
+    padding-top: 20px;
+}

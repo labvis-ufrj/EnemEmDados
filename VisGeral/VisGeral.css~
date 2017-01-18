@@ -1,0 +1,154 @@
+/*DISPERÇÃO - CSS*/
+
+/*body{
+	background: blue;
+}*/
+
+/*ícones*/
+.dotLines{
+	stroke: #444;
+	stroke-width: 2px;
+	opacity: .3;
+}
+.dotMatematica{
+	fill: #ffb0b4;
+	stroke: none;
+	stroke-width: 0px
+	fill: grey;
+}
+.dotMatematica.active{
+	/*color: #ff7b81;*/
+	fill: #ab4e52;
+	stroke: none;
+}
+
+
+
+.dotLinguagens{
+	fill: transparent;
+	stroke: #c5c9da;
+	stroke-width: 3px;
+}
+.dotLinguagens.active{
+	stroke: #666e8d;
+
+}
+.dotHumanas{
+	fill: #f0efad;
+	stroke: #f0efad;
+	stroke-width: 2px;
+}
+.dotHumanas.active{
+	color: #007b60;
+	fill: #74724e;
+	stroke: none;
+}
+
+
+
+
+.dotNatureza{
+	fill: transparent;
+	stroke: #c0e0c4;
+	stroke-width: 2px;
+}
+.dotNatureza.active{
+	color: #453776;
+	stroke: #577b5a;
+
+
+
+
+}
+.dotRedacao{
+	fill: none;
+	stroke: #d8bdd7;
+	stroke-width: 2px;
+	opacity: 1;
+}
+.dotRedacao.active{
+	color: #ffd800;
+	fill: none;
+	stroke: #92538f;
+}
+
+
+
+
+
+/*não sei o que é isso*/
+
+.y-axis{
+	fill: grey;
+	stroke-width: 2px
+}
+/*números do y do gráfico*/
+.y-axis text{
+	font-size: 13px;
+}
+.y-axis-text{
+	text-anchor: middle;
+	font-family: Ubuntu, courier;
+	font-size: 15px;
+	fill: grey;
+}
+
+
+/*abreviaturas dos estados no gráfico*/
+.textLabels{
+	text-anchor: middle;
+	font-family: Ubuntu, courier;
+	font-size: 14px;
+	fill: black;
+}
+.x-axis-text{
+	text-anchor: middle;
+	font-family: Ubuntu, courier;
+	font-size: 15px;
+	fill: grey;
+}
+.options{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 14px;
+	fill: grey;	
+	cursor: pointer;
+}
+.selected{
+	stroke: grey;
+	stroke-width: 1px;
+	fill: none;	
+}
+.lineX{
+	stroke: #ddd;
+	stroke-width: 1px;
+}
+.separate{
+	stroke: black;
+}
+svg{
+	background: white;
+}
+.domain-2{
+	stroke: grey ;
+	stroke-width: 1px;
+}
+.textinhoIndice{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 16px;
+	fill: black;
+}
+
+.textinhoExplicacao{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 12px;
+	fill: black;
+}
+.grades{
+	text-anchor: left;
+	font-family: Ubuntu, courier;
+	font-size: 15px;
+	fill: grey;
+}

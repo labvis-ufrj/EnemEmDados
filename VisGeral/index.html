@@ -195,6 +195,8 @@
 
  		        });
 
+
+
 			var disciplinas = ["Linguagens",
 	                    "Humanas", 
 	                    "Natureza",
@@ -327,6 +329,39 @@
 				vis.selectAll(".selected")
 					.attr("x", menuBoxX)
 					.attr("y", function(d, i){  return i*espacoEntreMenus + menuBoxY;});
+
+
+
+			menu.selectAll(".clickRect")
+				.data(prod)
+				.enter()
+				.append("rect")
+				.attr("class", "clickRect")
+				.attr("width", menuBoxWidth)
+				.attr("height", menuBoxHeigth)				
+		        .attr("x", function(d, i) { return 40; })
+ 		        .attr("y", function(d, i){ return i*espacoEntreMenus + menuBoxY;})
+ 		        .on("click", function(d, i){
+	 		       var dados = reordenar(d);
+		           VisGeralUpdate(dados, d);
+		           d3.selectAll(".options").style("font-weight","normal");
+		           d3.selectAll(".options")
+						.filter(function(e){
+		    				return d == e;
+		    				})
+				   		.style("font-weight","bold");
+
+
+					vis.selectAll(".selected")
+						.transition()
+						.attr("y", function(){ return i*espacoEntreMenus + menuBoxY;})
+						.duration(1000);
+
+ 		        });
+
+
+
+
 	        VisGeral();
 	      });
 

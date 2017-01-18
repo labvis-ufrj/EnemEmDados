@@ -114,16 +114,37 @@ svg{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
 	font-size: 12px;
-	fill: black;
+	fill: #555;
 }
 .poligonos{
 	fill: lightgray;
 	cursor: pointer;
 }
 .nome{
-	fill:black;
-	font-size: 12px;
+	fill: #444;
+	font-size: 11px;
 	text-anchor: left;
 	cursor: pointer;
 }
-
+.grid{
+	stroke:lightslategrey;
+	opacity: 0.5;
+}
+.mouseoverRect{
+	fill:transparent;
+}
+.on{
+	fill: black;
+	opacity: 0.3;
+	stroke-width: 4;
+	stroke: black;
+}
+.quantidadeText{
+	font-size: 35px;
+}
+.gradesText{
+	font-size: 35px;
+}
+.ageText{
+	font-size: 35px;
+}

@@ -1,19 +1,17 @@
-Pagina inicial
 
+
+Pagina inicial
+	justificar texto  		??
 
 vis mapa
-	transição *
-	gradiente ***				feito
-	mudar menu *				
-
+	
 vis geral
-	legendas ** 				feito
-	arrumar mouseover ***		
+	clicar em toda a regi�o do quadrado no menu 	ok
 
 vis idade
-	imagens auxiliares **** 	feito
-	legendas ** 				feito
-	retocar menu **				
-	adicionar grid **
-	Nome completo do estado acima
-	do gráfico
+	fixar range das m�dias 320-590					ok
+	adicionar grid **								ok
+	brasil em um hex�gono							ok
+	nota e quantidade de pessoas literal			ok
+	pessoas por milhar								ok
+

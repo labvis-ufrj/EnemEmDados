@@ -217,15 +217,15 @@ function VisIdade(sub, dados){
 
 
 	grafico.selectAll(".grid")
-		.data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+		.data([0, 1, 2, 3, 4, 5])
 		.enter()
 		.append("line")
 		.attr("class", "grid")
 		.attr("x1",function(d,i){return 0;})
 		.attr("x2",function(d,i){return tamanhox;})
-		.attr("y1",function(d,i){return gradeScale( (i+1) * (590-280-20)/10 + 270 )} )
-		.attr("y2",function(d,i){return gradeScale( (i+1) * (590-280-20)/10 + 270 )})
-		.attr("stroke-width", gridWidth);
+		.attr("y1",function(d,i){return gradeScale( (i+1) * (600-280-20)/6 + 250 )} )
+		.attr("y2",function(d,i){return gradeScale( (i+1) * (600-280-20)/6 + 250 )});
+		//.attr("stroke-width", gridWidth);
 
 	grafico.selectAll(".mouseoverRect")
 		.data(dados)

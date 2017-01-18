@@ -8,7 +8,7 @@ var fatorEscalaY = window.innerHeight / 755;
 var tamanhox = fatorEscalaX * 900;
 var tamanhoy = fatorEscalaY * 350;
 
-var posicaoX = fatorEscalaX * 450;//fatorEscalaX * 380;
+var posicaoX = fatorEscalaX * 500;//fatorEscalaX * 380;
 var posicaoY = fatorEscalaY * 215;
 
 
@@ -29,8 +29,8 @@ var shiftMenuY = 40;
 
 var quantidadePorColuna = 6;
 
-var posicaoMenuBrasilX = window.innerWidth*.045//menuX;
-var posicaoMenuBrasilY = 10//menuY - 30;
+var posicaoMenuBrasilX = 70//menuX;
+var posicaoMenuBrasilY = 280//menuY - 30;
 
 
 
@@ -89,22 +89,33 @@ var stateTextY = 200;
 var cor = {geral:"#bbb",
 		matematica:"#ff7b81",
             linguagens:"#7c86ab",
-            humanas:"#efe594", 
+            humanas:"#f0de98", 
             natureza:"#95cb9a",
             redacao:"#92538f"};
 
 var textinhoX = window.innerWidth*.045; //mude na variável menuX para ficar alinhado
-var textinhoY = 430;
+var textinhoY = 365
 var textinhoIndiceY = 75;
 
 var textoVector = ["As barras mostram a quantidade",
                     "de pessoas por faixa etária que",
-                    "fizeram a prova, com eixo",
-                    "quantitativo à esquerda.",
+                    "fizeram a prova, com número",
+                    "de pessoas à esquerda.",
                     "A primeira barra são os menores",
-                    "de 15 (-15), e a última representa",
-                    "os maiores de 50 (+50).",
+                    "de 15 anos (-15), e a última representa",
+                    "os maiores de 50 anos (+50).",
                     " ",
                     "A linha representa a média de",
                     "cada faixa etária, com eixo à direita."
                     ];
+//Para auxiliares:
+//raio circulo circunscrito ao hexagono
+var raioAux = 13;
+//separacoes verticais e horizontais entre os hexagonos
+//calculadas em funcao do raio
+var AuxDx = raioAux * 1.85;
+var AuxDy = raioAux * 2.25;
+var espessuraContornoAux = 1;
+
+var mapX = 55;
+var mapY = 90;

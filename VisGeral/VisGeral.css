@@ -144,11 +144,15 @@ svg{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
 	font-size: 12px;
-	fill: black;
+	fill: #444;
 }
 .grades{
 	text-anchor: left;
 	font-family: Ubuntu, courier;
 	font-size: 15px;
 	fill: grey;
+}
+.clickRect{
+	fill: transparent;
+	cursor: pointer;
 }

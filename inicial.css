@@ -3,9 +3,18 @@
     align-content: middle;
 }
 .textoInicial p{
-    align: middle;
+    /*
+    align-content: center;
+    text-align: justify;
+    text-justify: inter-word;
+    */
+    
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    text-justify: inter-word;
     font-family: 'Roboto Slab', serif;
-    font-size: 130%;
+    font-size: 120%;
 }
 .initialImage{
     padding-top: 20px;

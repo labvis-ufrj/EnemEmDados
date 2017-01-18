@@ -8,7 +8,7 @@ var fatorEscalaY = window.innerHeight / 755;
 var tamanhox = fatorEscalaX * 900;
 var tamanhoy = fatorEscalaY * 350;
 
-var posicaoX = fatorEscalaX * 450;//fatorEscalaX * 380;
+var posicaoX = fatorEscalaX * 500;//fatorEscalaX * 380;
 var posicaoY = fatorEscalaY * 215;
 
 
@@ -71,46 +71,57 @@ ordem final: 	geral
 var positionXAxisX = 0;
 var positionXAxisY = tamanhoy*1.15;
 
+
 //Atencao com esse posicionamento, ele esta rotacionado
 //var positionYAxisX = -tamanhoy/2;
 //nº de pessoas
 var positionYAxisX = -60;
-var positionYAxisY = -15;
-
+var positionYAxisY = -20;
+var saparacaoYAxis = 20;
 //Medias
 var positionZAxisX = tamanhox +20;
 var positionZAxisY = -15;
 
 //posicao do nome da visualizacao
-var stateTextX = fatorEscalaX *875;
+var stateTextX = fatorEscalaX *700;
 var stateTextY = 200;
+
+var quantidadeTextX = stateTextX + 300;
+var quantidadeTextY = stateTextY;
+
+
+var gradesTextX = stateTextX + 460;
+var gradesTextY = stateTextY;
+
+var ageTextX = stateTextX + 190;
+var ageTextY = stateTextY;
 
 //cores dos graficos auxiliares
 var cor = {geral:"#bbb",
 		matematica:"#ff7b81",
             linguagens:"#7c86ab",
-            humanas:"#efe594", 
+            humanas:"#f0de98", 
             natureza:"#95cb9a",
             redacao:"#92538f"};
 
 var textinhoX = window.innerWidth*.045; //mude na variável menuX para ficar alinhado
-var textinhoY = 415;
+var textinhoY = 365
 var textinhoIndiceY = 75;
 
 var textoVector = ["As barras mostram a quantidade",
                     "de pessoas por faixa etária que",
-                    "fizeram a prova, com eixo",
-                    "quantitativo à esquerda.",
+                    "fizeram a prova, com número",
+                    "de pessoas à esquerda.",
                     "A primeira barra são os menores",
-                    "de 15 (-15), e a última representa",
-                    "os maiores de 50 (+50).",
+                    "de 15 anos (-15), e a última representa",
+                    "os maiores de 50 anos (+50).",
                     " ",
                     "A linha representa a média de",
                     "cada faixa etária, com eixo à direita."
                     ];
 //Para auxiliares:
 //raio circulo circunscrito ao hexagono
-var raioAux = 16;
+var raioAux = 13;
 //separacoes verticais e horizontais entre os hexagonos
 //calculadas em funcao do raio
 var AuxDx = raioAux * 1.85;
@@ -118,4 +129,8 @@ var AuxDy = raioAux * 2.25;
 var espessuraContornoAux = 1;
 
 var mapX = 55;
-var mapY = 100;
+var mapY = 90;
+
+var gridWidth = 3;
+
+var brasil = [{x:1.5, y:5, estado:"Brasil"}];

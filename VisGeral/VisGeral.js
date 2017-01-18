@@ -281,9 +281,18 @@ function VisGeral(){
 	    .attr("y", 0)
 	    .style("fill", "transparent")
 		.on("mouseover", function(d, i){
+
+			
+			var disciplinas2 = ["Estado",
+						"Linguagens",
+	                    "Humanas", 
+	                    "Natureza",
+	                    "Redacao",
+	                    "Matematica"];
+
 	      	return menu.selectAll(".grades")
 	      				.transition()
-	      				.text(function(e,f){return d[disciplinas[f]];})
+	      				.text(function(e,f){return d[disciplinas2[f]];})
 	      				.style("visibility", "visible")
 	      				.duration(0);
 	      		      })
